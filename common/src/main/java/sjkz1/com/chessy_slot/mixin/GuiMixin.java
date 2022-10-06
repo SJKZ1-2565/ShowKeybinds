@@ -20,7 +20,8 @@ public abstract class GuiMixin extends GuiComponent {
 
     @Shadow public abstract Font getFont();
 
-    @Shadow protected int screenHeight;
+    @Shadow
+    private int screenHeight;
 
     @Inject(method = "renderHotbar", at = @At(value = "TAIL"))
     public void renderHotBar(float f, PoseStack poseStack, CallbackInfo ci) {
@@ -29,7 +30,7 @@ public abstract class GuiMixin extends GuiComponent {
         int i = this.screenWidth / 2;
         var list = Minecraft.getInstance().options.keyHotbarSlots;
         for (int j = 0; j < Arrays.stream(list).toList().size(); j++) {
-            this.getFont().draw(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), i - 91 - 15 + (j + 1) * 20, this.screenHeight - 22 + 3, 16777215);
+            this.getFont().draw(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), i - 91 - 15 + (j + 1) * 20, this.screenHeight - 22 + 3, 16733695);
         }
         poseStack.popPose();
     }
