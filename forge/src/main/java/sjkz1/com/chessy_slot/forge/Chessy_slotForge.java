@@ -1,9 +1,9 @@
 package sjkz1.com.chessy_slot.forge;
 
 import dev.architectury.platform.forge.EventBuses;
-import sjkz1.com.chessy_slot.Chessy_slot;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import sjkz1.com.chessy_slot.Chessy_slot;
 
 @Mod(Chessy_slot.MOD_ID)
 public class Chessy_slotForge {

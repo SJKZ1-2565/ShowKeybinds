@@ -1,7 +1,6 @@
 package sjkz1.com.chessy_slot.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
@@ -16,9 +15,11 @@ import java.util.Arrays;
 
 @Mixin(Gui.class)
 public abstract class GuiMixin extends GuiComponent {
-    @Shadow protected int screenWidth;
+    @Shadow
+    protected int screenWidth;
 
-    @Shadow public abstract Font getFont();
+    @Shadow
+    public abstract Font getFont();
 
     @Shadow
     private int screenHeight;
