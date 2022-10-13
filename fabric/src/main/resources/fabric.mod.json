@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "chessy_slot",
+  "id": "cheesy_slot",
   "version": "${version}",
   "name": "Cheesy Slot",
   "description": "This mod show what key that set for selecting slot for some people forgot what they have set.",
@@ -13,12 +13,12 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "sjkz1.com.chessy_slot.fabric.Chessy_slotFabric"
+      "sjkz1.com.cheesy_slot.fabric.CheesySlotFabric"
     ]
   },
   "mixins": [
-    "chessy_slot.mixins.json",
-    "chessy_slot-common.mixins.json"
+    "cheesy_slot.mixins.json",
+    "cheesy_slot-common.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.9",

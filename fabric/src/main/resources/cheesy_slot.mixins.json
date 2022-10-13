@@ -1,12 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "sjkz1.com.chessy_slot.mixin",
+  "package": "sjkz1.com.cheesy_slot.mixin.fabric",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
   "client": [
-    "GuiMixin"
   ],
   "injectors": {
     "defaultRequire": 1

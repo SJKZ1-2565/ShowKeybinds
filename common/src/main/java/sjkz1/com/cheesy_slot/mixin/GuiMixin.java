@@ -1,4 +1,4 @@
-package sjkz1.com.chessy_slot.mixin;
+package sjkz1.com.cheesy_slot.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
