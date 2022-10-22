@@ -20,8 +20,7 @@ public final class CheesySlotConfig implements ConfigData {
 
     public static class General
     {
-        @ConfigEntry.Gui.Tooltip
-        @Comment("Rainbow color")
-        public boolean rainbowColor = false;
+        @ConfigEntry.ColorPicker
+        public int textColor = 0xFFFFFF;
     }
 }

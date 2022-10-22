@@ -10,13 +10,14 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import sjkz1.com.cheesy_slot.CheesySlot;
 
 import java.util.Arrays;
 
 @Mixin(Gui.class)
 public abstract class GuiMixin extends GuiComponent {
     @Shadow
-    protected int screenWidth;
+    private int screenWidth;
 
     @Shadow
     public abstract Font getFont();
@@ -31,7 +32,7 @@ public abstract class GuiMixin extends GuiComponent {
         int i = this.screenWidth / 2;
         var list = Minecraft.getInstance().options.keyHotbarSlots;
         for (int j = 0; j < Arrays.stream(list).toList().size(); j++) {
-            this.getFont().draw(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), i - 91 - 15 + (j + 1) * 20, this.screenHeight - 22 + 3, 16733695);
+            this.getFont().draw(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), i - 91 - 15 + (j + 1) * 20, this.screenHeight - 22 + 3, CheesySlot.CONFIG.general.textColor);
         }
         poseStack.popPose();
     }
