@@ -1,4 +1,6 @@
 {
   "text.autoconfig.cheesy_slot.title" : "Cheesy Slot Config",
-  "text.autoconfig.cheesy_slot.option.general.textColor" : "Text color"
+  "text.autoconfig.cheesy_slot.option.general.textColor" : "Text color",
+  "text.autoconfig.cheesy_slot.option.general.enableText" : "Text Visible ",
+  "text.autoconfig.cheesy_slot.option.general.scale" : "Text scale"
 }
