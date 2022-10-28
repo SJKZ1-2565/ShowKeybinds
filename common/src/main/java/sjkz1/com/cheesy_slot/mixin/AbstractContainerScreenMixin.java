@@ -28,7 +28,7 @@ public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMe
     public void renderSlot(PoseStack poseStack, Slot slot, CallbackInfo ci) {
         if (CheesySlot.CONFIG.container.enableContainerText) {
             poseStack.pushPose();
-            poseStack.translate(0f, 0f, this.getBlitOffset() + 200.0f);
+            poseStack.translate(0f, 0f, 1000f);
             float scale = CheesySlot.CONFIG.container.containerScale;
             poseStack.scale(scale, scale, scale);
             var list = Minecraft.getInstance().options.keyHotbarSlots;

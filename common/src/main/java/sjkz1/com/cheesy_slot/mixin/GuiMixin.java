@@ -29,7 +29,7 @@ public abstract class GuiMixin extends GuiComponent {
     public void renderHotBar(float f, PoseStack poseStack, CallbackInfo ci) {
         if (CheesySlot.CONFIG.general.enableHotBarText) {
             poseStack.pushPose();
-            poseStack.translate(0f, 0f, this.getBlitOffset() + 200f);
+            poseStack.translate(0f, 0f, this.getBlitOffset() + 1000f);
             float scale = CheesySlot.CONFIG.general.hotBarScale;
             poseStack.scale(scale, scale, scale);
             int i = this.screenWidth / 2;
