@@ -9,19 +9,31 @@ import sjkz1.com.cheesy_slot.CheesySlot;
 @Config(name = CheesySlot.MOD_ID)
 @Config.Gui.Background("minecraft:textures/block/structure_block_corner.png")
 public final class CheesySlotConfig implements ConfigData {
-    @ConfigEntry.Category("general")
+    @ConfigEntry.Category("hotbar")
     @ConfigEntry.Gui.TransitiveObject
     public General general;
+    @ConfigEntry.Category("container")
+    @ConfigEntry.Gui.TransitiveObject
+    public Container container;
 
     public CheesySlotConfig() {
         this.general = new General();
+        this.container = new Container();
     }
 
     public static class General {
-        public boolean enableText = true;
+        public boolean enableHotBarText = true;
         @ConfigEntry.ColorPicker
-        public int textColor = 0xFFFFFF;
-        @Comment("Recommend min = 0.5,max = 1.0f\nJust recommend...")
-        public float scale = 1.0f;
+        public int hotBarTextColor = 0xFFFFFF;
+        @Comment("Recommend min = 0.5,max = 1.0\nJust recommend...")
+        public float hotBarScale = 1.0f;
+    }
+
+    public static class Container {
+        public boolean enableContainerText = true;
+        @ConfigEntry.ColorPicker
+        public int containerTextColor = 0xFFFFFF;
+        @Comment("Recommend min = 0.5,max = 1.0\nJust recommend...")
+        public float containerScale = 1.0f;
     }
 }
