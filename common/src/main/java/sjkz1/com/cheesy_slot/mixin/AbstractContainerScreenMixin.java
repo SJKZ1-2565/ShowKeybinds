@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -31,29 +32,53 @@ public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMe
             float scale = CheesySlot.CONFIG.container.containerScale;
             poseStack.scale(scale, scale, scale);
             var list = Minecraft.getInstance().options.keyHotbarSlots;
-            if (slot.y == 142) {
+            if (!(this.minecraft.screen instanceof CreativeModeInventoryScreen)) {
+                if (slot.y == 142) {
+                    switch (slot.x) {
+                        case 8 ->
+                                this.font.draw(poseStack, list[0].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
+                        case 26 ->
+                                this.font.draw(poseStack, list[1].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
+                        case 44 ->
+                                this.font.draw(poseStack, list[2].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
+                        case 62 ->
+                                this.font.draw(poseStack, list[3].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
+                        case 80 ->
+                                this.font.draw(poseStack, list[4].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
+                        case 98 ->
+                                this.font.draw(poseStack, list[5].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
+                        case 116 ->
+                                this.font.draw(poseStack, list[6].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
+                        case 134 ->
+                                this.font.draw(poseStack, list[7].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
+                        case 152 ->
+                                this.font.draw(poseStack, list[8].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
+                    }
+                }
+            } else if (slot.y == 112) {
                 switch (slot.x) {
-                    case 8 ->
+                    case 9 ->
                             this.font.draw(poseStack, list[0].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
-                    case 26 ->
+                    case 27 ->
                             this.font.draw(poseStack, list[1].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
-                    case 44 ->
+                    case 45 ->
                             this.font.draw(poseStack, list[2].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
-                    case 62 ->
+                    case 63 ->
                             this.font.draw(poseStack, list[3].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
-                    case 80 ->
+                    case 81 ->
                             this.font.draw(poseStack, list[4].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
-                    case 98 ->
+                    case 99 ->
                             this.font.draw(poseStack, list[5].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
-                    case 116 ->
+                    case 117 ->
                             this.font.draw(poseStack, list[6].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
-                    case 134 ->
+                    case 135 ->
                             this.font.draw(poseStack, list[7].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
-                    case 152 ->
+                    case 153 ->
                             this.font.draw(poseStack, list[8].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale), CheesySlot.CONFIG.container.containerTextColor);
                 }
             }
-            poseStack.popPose();
         }
+        poseStack.popPose();
     }
 }
+
