@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "GuiMixin"
+    "GuiMixin",
+    "KeyBindsScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
