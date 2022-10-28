@@ -29,13 +29,13 @@ public abstract class GuiMixin extends GuiComponent {
     public void renderHotBar(float f, PoseStack poseStack, CallbackInfo ci) {
         if (CheesySlot.CONFIG.general.enableText) {
             poseStack.pushPose();
-            poseStack.translate(0f,0f,1000f);
+            poseStack.translate(0f,0f,this.getBlitOffset() + 200f);
             float scale = CheesySlot.CONFIG.general.scale;
             poseStack.scale(scale, scale, scale);
             int i = this.screenWidth / 2;
             var list = Minecraft.getInstance().options.keyHotbarSlots;
             for (int j = 0; j < Arrays.stream(list).toList().size(); j++) {
-                drawCenteredString(poseStack, this.getFont(), Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), (int) ((i - 91 - 15 + (j + 1) * 20) / scale), (int) ((this.screenHeight - 22 + 3) / scale), CheesySlot.CONFIG.general.textColor);
+                this.getFont().draw(poseStack ,Arrays.stream(list).toList().get(j).getTranslatedKeyMessage().getString(), (int) ((i - 91 - 15 + (j + 1) * 20) / scale), (int) ((this.screenHeight - 22 + 3) / scale), CheesySlot.CONFIG.general.textColor);
             }
             poseStack.popPose();
         }
