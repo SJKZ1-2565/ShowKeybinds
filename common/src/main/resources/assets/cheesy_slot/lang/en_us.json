@@ -1,11 +1,11 @@
 {
-  "text.autoconfig.cheesy_slot.title" : "Cheesy Slot Config",
-  "text.autoconfig.cheesy_slot.category.hotbar" : "Hotbar",
-  "text.autoconfig.cheesy_slot.option.general.hotBarTextColor" : "Hotbar text color",
-  "text.autoconfig.cheesy_slot.option.general.enableHotBarText" : "Hotbar text Visible ",
-  "text.autoconfig.cheesy_slot.option.general.hotBarScale" : "Hotbar text scale",
-  "text.autoconfig.cheesy_slot.category.container" : "Container",
-  "text.autoconfig.cheesy_slot.option.container.containerTextColor" : "Container text color",
-  "text.autoconfig.cheesy_slot.option.container.enableContainerText" : "Container text Visible ",
-  "text.autoconfig.cheesy_slot.option.container.containerScale" : "Container text scale"
+  "text.autoconfig.cheesy_slot.title": "Cheesy Slot Config",
+  "text.autoconfig.cheesy_slot.category.hotbar": "Hotbar",
+  "text.autoconfig.cheesy_slot.option.general.hotBarTextColor": "Hotbar text color",
+  "text.autoconfig.cheesy_slot.option.general.enableHotBarText": "Hotbar text Visible ",
+  "text.autoconfig.cheesy_slot.option.general.hotBarScale": "Hotbar text scale",
+  "text.autoconfig.cheesy_slot.category.container": "Container",
+  "text.autoconfig.cheesy_slot.option.container.containerTextColor": "Container text color",
+  "text.autoconfig.cheesy_slot.option.container.enableContainerText": "Container text Visible ",
+  "text.autoconfig.cheesy_slot.option.container.containerScale": "Container text scale"
 }
