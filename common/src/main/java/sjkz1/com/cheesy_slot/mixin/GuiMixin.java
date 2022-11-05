@@ -36,7 +36,7 @@ public abstract class GuiMixin extends GuiComponent {
         if (CheesySlot.CONFIG.general.enableHotBarText) {
             Player player = this.getCameraPlayer();
             poseStack.pushPose();
-            poseStack.translate(0f, 0f, this.getBlitOffset() + 500f);
+            poseStack.translate(0f, 0f, this.getBlitOffset() + 350f);
             float scale = CheesySlot.CONFIG.general.hotBarScale;
             poseStack.scale(scale, scale, scale);
             int i = this.screenWidth / 2;
