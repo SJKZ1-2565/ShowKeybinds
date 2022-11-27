@@ -22,6 +22,7 @@ public final class CheesySlotConfig implements ConfigData {
     }
 
     public static class General {
+        public boolean loggedInToasts = true;
         public boolean enableHotBarText = true;
         @ConfigEntry.ColorPicker
         public int hotBarTextColor = 0xFFFFFF;
