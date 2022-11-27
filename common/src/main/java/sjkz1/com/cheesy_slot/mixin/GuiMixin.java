@@ -45,13 +45,13 @@ public abstract class GuiMixin extends GuiComponent {
             var list = Minecraft.getInstance().options.keyHotbarSlots;
             var offHandKey = Minecraft.getInstance().options.keySwapOffhand;
             for (int j = 0; j < Arrays.stream(list).toList().size(); j++) {
-                this.getFont().drawShadow(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage().getString(), ((i - 91 - 15 + (j + 1) * 20) / scale), (int) ((this.screenHeight - 22 + 3) / scale), CheesySlot.CONFIG.general.hotBarTextColor);
+                this.getFont().drawShadow(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), ((i - 91 - 15 + (j + 1) * 20) / scale), (int) ((this.screenHeight - 22 + 3) / scale), CheesySlot.CONFIG.general.hotBarTextColor);
             }
             if (!itemStack.isEmpty()) {
                 if (humanoidArm == HumanoidArm.LEFT) {
-                    this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage().getString(), ((i - 87 - 29) / scale), (int) ((this.screenHeight - 19) / scale), CheesySlot.CONFIG.general.hotBarTextColor);
+                    this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage(), ((i - 87 - 29) / scale), (int) ((this.screenHeight - 19) / scale), CheesySlot.CONFIG.general.hotBarTextColor);
                 } else {
-                    this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage().getString(), ((i + 102) / scale), (int) ((this.screenHeight - 19) / scale), CheesySlot.CONFIG.general.hotBarTextColor);
+                    this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage(), ((i + 102) / scale), (int) ((this.screenHeight - 19) / scale), CheesySlot.CONFIG.general.hotBarTextColor);
                 }
             }
             poseStack.popPose();

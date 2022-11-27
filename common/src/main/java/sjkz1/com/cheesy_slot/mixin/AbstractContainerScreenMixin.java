@@ -38,46 +38,46 @@ public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMe
                 if (slot.y == 142) {
                     switch (slot.x) {
                         case 8 ->
-                                this.font.drawShadow(poseStack, list[0].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[0].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 26 ->
-                                this.font.drawShadow(poseStack, list[1].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[1].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 44 ->
-                                this.font.drawShadow(poseStack, list[2].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[2].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 62 ->
-                                this.font.drawShadow(poseStack, list[3].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[3].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 80 ->
-                                this.font.drawShadow(poseStack, list[4].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[4].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 98 ->
-                                this.font.drawShadow(poseStack, list[5].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[5].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 116 ->
-                                this.font.drawShadow(poseStack, list[6].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[6].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 134 ->
-                                this.font.drawShadow(poseStack, list[7].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[7].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 152 ->
-                                this.font.drawShadow(poseStack, list[8].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[8].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                     }
                 }
             } else {
                 if (slot.y == 112) {
                     switch (slot.x) {
                         case 9 ->
-                                this.font.drawShadow(poseStack, list[0].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[0].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 27 ->
-                                this.font.drawShadow(poseStack, list[1].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[1].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 45 ->
-                                this.font.drawShadow(poseStack, list[2].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[2].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 63 ->
-                                this.font.drawShadow(poseStack, list[3].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[3].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 81 ->
-                                this.font.drawShadow(poseStack, list[4].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[4].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 99 ->
-                                this.font.drawShadow(poseStack, list[5].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[5].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 117 ->
-                                this.font.drawShadow(poseStack, list[6].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[6].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 135 ->
-                                this.font.drawShadow(poseStack, list[7].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[7].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                         case 153 ->
-                                this.font.drawShadow(poseStack, list[8].getTranslatedKeyMessage().getString(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
+                                this.font.drawShadow(poseStack, list[8].getTranslatedKeyMessage(), (int) (slot.x / scale), (int) ((slot.y) / scale) + textY, CheesySlot.CONFIG.container.containerTextColor);
                     }
                 }
             }
