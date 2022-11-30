@@ -24,6 +24,7 @@ public final class CheesySlotConfig implements ConfigData {
     public static class General {
         public boolean loggedInToasts = true;
         public boolean enableHotBarText = true;
+        public boolean rainBowText = false;
         @ConfigEntry.ColorPicker
         public int hotBarTextColor = 0xFFFFFF;
         @Comment("Recommend min = 0.5,max = 1.0\nJust recommend...")
@@ -32,6 +33,8 @@ public final class CheesySlotConfig implements ConfigData {
 
     public static class Container {
         public boolean enableContainerText = true;
+
+        public boolean rainBowText = false;
         @ConfigEntry.ColorPicker
         public int containerTextColor = 0xFFFF55;
         @Comment("Recommend min = 0.5,max = 1.0\nJust recommend...")

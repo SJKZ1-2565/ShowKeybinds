@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import sjkz1.com.cheesy_slot.CheesySlot;
 
+import java.awt.*;
 import java.util.Arrays;
 
 @Mixin(Gui.class)
@@ -44,14 +45,16 @@ public abstract class GuiMixin extends GuiComponent {
             HumanoidArm humanoidArm = player.getMainArm().getOpposite();
             var list = Minecraft.getInstance().options.keyHotbarSlots;
             var offHandKey = Minecraft.getInstance().options.keySwapOffhand;
+            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F));
+            var hotBarColor = CheesySlot.CONFIG.general.rainBowText ? rainbow : CheesySlot.CONFIG.general.hotBarTextColor;
             for (int j = 0; j < Arrays.stream(list).toList().size(); j++) {
-                this.getFont().drawShadow(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), ((i - 91 - 15 + (j + 1) * 20) / scale), (int) ((this.screenHeight - 22 + 3) / scale), CheesySlot.CONFIG.general.hotBarTextColor);
+                this.getFont().drawShadow(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), ((i - 91 - 15 + (j + 1) * 20) / scale), (int) ((this.screenHeight - 22 + 3) / scale), hotBarColor);
             }
             if (!itemStack.isEmpty()) {
                 if (humanoidArm == HumanoidArm.LEFT) {
-                    this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage(), ((i - 87 - 29) / scale), (int) ((this.screenHeight - 19) / scale), CheesySlot.CONFIG.general.hotBarTextColor);
+                    this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage(), ((i - 87 - 29) / scale), (int) ((this.screenHeight - 19) / scale), hotBarColor);
                 } else {
-                    this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage(), ((i + 102) / scale), (int) ((this.screenHeight - 19) / scale), CheesySlot.CONFIG.general.hotBarTextColor);
+                    this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage(), ((i + 102) / scale), (int) ((this.screenHeight - 19) / scale), hotBarColor);
                 }
             }
             poseStack.popPose();
