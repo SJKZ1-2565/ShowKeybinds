@@ -7,7 +7,7 @@ import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 import sjkz1.com.cheesy_slot.CheesySlot;
 
 @Config(name = CheesySlot.MOD_ID)
-@Config.Gui.Background("minecraft:textures/block/structure_block_corner.png")
+@Config.Gui.Background("minecraft:textures/block/sand.png")
 public final class CheesySlotConfig implements ConfigData {
     @ConfigEntry.Category("hotbar")
     @ConfigEntry.Gui.TransitiveObject
