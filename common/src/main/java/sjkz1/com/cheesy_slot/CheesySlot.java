@@ -22,7 +22,6 @@ public class CheesySlot {
     public static String getVersion() throws IOException {
         URL url1 = new URL("https://raw.githubusercontent.com/SJKZ1-2565/modJSON-URL/master/cheesy_slot.json");
         InputStreamReader reader1 = new InputStreamReader(url1.openStream());
-        var property = JsonParser.parseReader(reader1).getAsJsonObject().get("lastes_version").getAsString();
-        return property;
+        return JsonParser.parseReader(reader1).getAsJsonObject().get("1.19_latest").getAsString();
     }
 }
