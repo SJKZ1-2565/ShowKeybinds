@@ -48,10 +48,11 @@ public abstract class GuiMixin extends GuiComponent {
             int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F));
             var hotBarColor = CheesySlot.CONFIG.general.rainBowText ? rainbow : CheesySlot.CONFIG.general.hotBarTextColor;
             for (int j = 0; j < Arrays.stream(list).toList().size(); j++) {
+                final var v = (i - 91 - 15 + (j + 1) * 20) / scale;
                 if (CheesySlot.CONFIG.general.shadowedText) {
-                    this.getFont().drawShadow(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), ((i - 91 - 15 + (j + 1) * 20) / scale), (int) ((this.screenHeight - 22 + 3) / scale), hotBarColor);
+                    this.getFont().drawShadow(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), v, (int) ((this.screenHeight - 22 + 3) / scale), hotBarColor);
                 } else {
-                    this.getFont().draw(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), ((i - 91 - 15 + (j + 1) * 20) / scale), (int) ((this.screenHeight - 22 + 3) / scale), hotBarColor);
+                    this.getFont().draw(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), v, (int) ((this.screenHeight - 22 + 3) / scale), hotBarColor);
                 }
             }
             if (!itemStack.isEmpty()) {
