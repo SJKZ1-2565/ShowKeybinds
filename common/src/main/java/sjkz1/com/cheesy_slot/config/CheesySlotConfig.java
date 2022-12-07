@@ -24,6 +24,7 @@ public final class CheesySlotConfig implements ConfigData {
     public static class General {
         public boolean loggedInToasts = true;
         public boolean enableHotBarText = true;
+        public boolean shadowedText = true;
         public boolean rainBowText = false;
         @ConfigEntry.ColorPicker
         public int hotBarTextColor = 0xFFFFFF;
@@ -33,7 +34,7 @@ public final class CheesySlotConfig implements ConfigData {
 
     public static class Container {
         public boolean enableContainerText = true;
-
+        public boolean shadowedText = true;
         public boolean rainBowText = false;
         @ConfigEntry.ColorPicker
         public int containerTextColor = 0xFFFF55;
