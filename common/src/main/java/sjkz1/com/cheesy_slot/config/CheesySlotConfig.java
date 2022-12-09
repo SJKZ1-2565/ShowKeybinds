@@ -23,6 +23,7 @@ public final class CheesySlotConfig implements ConfigData {
 
     public static class General {
         public boolean loggedInToasts = true;
+        public int hotBarHeight = 0;
         public boolean enableHotBarText = true;
         public boolean shadowedText = true;
         public boolean rainBowText = false;

@@ -2,6 +2,7 @@
   "text.autoconfig.cheesy_slot.title": "Cheesy Slot Config",
   "text.autoconfig.cheesy_slot.category.hotbar": "Hotbar",
   "text.autoconfig.cheesy_slot.option.general.hotBarTextColor": "Hotbar text color",
+  "text.autoconfig.cheesy_slot.option.general.hotBarHeight": "Hotbar Height",
   "text.autoconfig.cheesy_slot.option.general.loggedInToasts": "Enable Log-IN Suggestion",
   "text.autoconfig.cheesy_slot.option.general.enableHotBarText": "Hotbar text Visible",
   "text.autoconfig.cheesy_slot.option.general.rainBowText": "Rainbow text color",
