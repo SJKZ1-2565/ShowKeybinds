@@ -1,5 +1,5 @@
 modLoader = "javafml" #mandatory
-loaderVersion = "[44,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+loaderVersion = "[43,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 license = "All Rights Reserved"
 
 [[mods]] #mandatory
@@ -14,20 +14,20 @@ This mod show what key that set for selecting slot for some people forgot what t
 [[dependencies.cheesy_slot]] #optional
 modId = "forge" #mandatory
 mandatory = true #mandatory
-versionRange = "[44,)" #mandatory
+versionRange = "[43,)" #mandatory
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.cheesy_slot]]
 modId = "cloth_config"
 mandatory = true
-versionRange = "[9.0,)"
+versionRange = "[8.2.88,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.cheesy_slot]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.3,)"
+versionRange = "[1.19.2,)"
 ordering = "NONE"
 side = "BOTH"
