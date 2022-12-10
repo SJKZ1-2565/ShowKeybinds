@@ -12,7 +12,7 @@ import java.net.URL;
 public class CheesySlot {
     public static final String MOD_ID = "cheesy_slot";
     public static final String MOD_NAME = "Cheesy Slot";
-    public static final String VERSION = "1.0.7";
+    public static final String VERSION = "2.0.1";
     public static CheesySlotConfig CONFIG;
 
     public static void init() {
