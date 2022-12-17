@@ -54,7 +54,7 @@ public abstract class GuiMixin extends GuiComponent {
             HumanoidArm humanoidArm = player.getMainArm().getOpposite();
             var list = Minecraft.getInstance().options.keyHotbarSlots;
             var offHandKey = Minecraft.getInstance().options.keySwapOffhand;
-            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F));
+            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % CheesySlot.CONFIG.general.rainbowColorSpeed, 0.8F, 0.8F));
             var hotBarColor = CheesySlot.CONFIG.general.rainBowText ? rainbow : CheesySlot.CONFIG.general.hotBarTextColor;
             for (int j = 0; j < Arrays.stream(list).toList().size(); j++) {
                 final var v = (i - 91 - 15 + (j + 1) * 20) / scale;
