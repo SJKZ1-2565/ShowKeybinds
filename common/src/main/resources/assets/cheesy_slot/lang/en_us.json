@@ -11,6 +11,7 @@
   "text.autoconfig.cheesy_slot.option.container.rainBowText": "Rainbow text color",
   "text.autoconfig.cheesy_slot.option.container.shadowedText": "Shadowed text",
   "text.autoconfig.cheesy_slot.option.general.hotBarScale": "Hotbar text scale",
+  "text.autoconfig.cheesy_slot.option.general.itemCountColor": "Item count color",
   "text.autoconfig.cheesy_slot.category.container": "Container",
   "text.autoconfig.cheesy_slot.option.container.containerTextColor": "Container text color",
   "text.autoconfig.cheesy_slot.option.container.enableContainerText": "Container text Visible ",
