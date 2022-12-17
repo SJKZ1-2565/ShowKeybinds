@@ -27,8 +27,11 @@ public final class CheesySlotConfig implements ConfigData {
         public boolean enableHotBarText = true;
         public boolean shadowedText = true;
         public boolean rainBowText = false;
+        public long rainbowColorSpeed = 2500L;
         @ConfigEntry.ColorPicker
         public int hotBarTextColor = 0xFFFFFF;
+        @ConfigEntry.ColorPicker
+        public int itemCountColor = 0xFFFFFF;
         @Comment("Recommend min = 0.5,max = 1.0\nJust recommend...")
         public float hotBarScale = 1.0f;
     }
