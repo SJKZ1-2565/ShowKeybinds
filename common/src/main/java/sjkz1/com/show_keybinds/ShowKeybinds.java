@@ -10,8 +10,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 public class ShowKeybinds {
-    public static final String MOD_ID = "cheesy_slot";
-    public static final String MOD_NAME = "Cheesy Slot";
+    public static final String MOD_ID = "show_keybinds";
+    public static final String MOD_NAME = "Show Keybinds";
     public static final String VERSION = "2.0.1";
     public static ShowKeybindsConfig CONFIG;
 
