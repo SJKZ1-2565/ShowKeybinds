@@ -13,10 +13,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "sjkz1.com.showkeybinds.fabric.CheesySlotFabric"
+      "sjkz1.com.show_keybinds.fabric.ShowKeybindsFabric"
     ],
     "modmenu": [
-      "sjkz1.com.showkeybinds.fabric.modmenu.ModMenuIntegration"
+      "sjkz1.com.show_keybinds.fabric.modmenu.ModMenuIntegration"
     ]
   },
   "mixins": [
