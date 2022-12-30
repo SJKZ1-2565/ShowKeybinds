@@ -1,14 +1,14 @@
-package sjkz1.com.cheesy_slot.config;
+package sjkz1.com.show_keybinds.config;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
-import sjkz1.com.cheesy_slot.CheesySlot;
+import sjkz1.com.show_keybinds.ShowKeybinds;
 
-@Config(name = CheesySlot.MOD_ID)
+@Config(name = ShowKeybinds.MOD_ID)
 @Config.Gui.Background("minecraft:textures/block/bamboo_mosaic.png")
-public final class CheesySlotConfig implements ConfigData {
+public final class ShowKeybindsConfig implements ConfigData {
     @ConfigEntry.Category("hotbar")
     @ConfigEntry.Gui.TransitiveObject
     public General general;
@@ -16,7 +16,7 @@ public final class CheesySlotConfig implements ConfigData {
     @ConfigEntry.Gui.TransitiveObject
     public Container container;
 
-    public CheesySlotConfig() {
+    public ShowKeybindsConfig() {
         this.general = new General();
         this.container = new Container();
     }

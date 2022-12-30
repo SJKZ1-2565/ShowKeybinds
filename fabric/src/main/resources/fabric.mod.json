@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "cheesy_slot",
+  "id": "show_keybinds",
   "version": "${version}",
-  "name": "Cheesy Slot",
+  "name": "Minecraft Show keybinds",
   "description": "This mod show what key that set for selecting slot for some people forgot what they have set.",
   "authors": [
     "SJKZ1"
@@ -13,15 +13,15 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "sjkz1.com.cheesy_slot.fabric.CheesySlotFabric"
+      "sjkz1.com.show_keybinds.fabric.ShowKeybindsFabric"
     ],
     "modmenu": [
-      "sjkz1.com.cheesy_slot.fabric.modmenu.ModMenuIntegration"
+      "sjkz1.com.show_keybinds.fabric.modmenu.ModMenuIntegration"
     ]
   },
   "mixins": [
-    "cheesy_slot.mixins.json",
-    "cheesy_slot-common.mixins.json"
+    "show_keybinds.mixins.json",
+    "show_keybinds-common.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.11",

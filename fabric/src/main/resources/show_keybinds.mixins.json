@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "sjkz1.com.cheesy_slot.mixin.forge",
+  "package": "sjkz1.com.show_keybinds.mixin.fabric",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],

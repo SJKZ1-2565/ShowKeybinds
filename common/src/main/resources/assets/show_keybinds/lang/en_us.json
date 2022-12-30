@@ -1,0 +1,19 @@
+{
+  "text.autoconfig.show_keybinds.title": "Show Keybinds Config",
+  "text.autoconfig.show_keybinds.category.hotbar": "Hotbar",
+  "text.autoconfig.show_keybinds.option.general.hotBarTextColor": "Hotbar text color",
+  "text.autoconfig.show_keybinds.option.general.hotBarHeight": "Hotbar Height",
+  "text.autoconfig.show_keybinds.option.general.loggedInToasts": "Enable Log-IN Suggestion",
+  "text.autoconfig.show_keybinds.option.general.enableHotBarText": "Hotbar text Visible",
+  "text.autoconfig.show_keybinds.option.general.rainBowText": "Rainbow text color",
+  "text.autoconfig.show_keybinds.option.general.shadowedText": "Shadowed text",
+  "text.autoconfig.show_keybinds.option.general.rainbowColorSpeed": "Rainbow color speed",
+  "text.autoconfig.show_keybinds.option.container.rainBowText": "Rainbow text color",
+  "text.autoconfig.show_keybinds.option.container.shadowedText": "Shadowed text",
+  "text.autoconfig.show_keybinds.option.general.hotBarScale": "Hotbar text scale",
+  "text.autoconfig.show_keybinds.option.general.itemCountColor": "Item count color",
+  "text.autoconfig.show_keybinds.category.container": "Container",
+  "text.autoconfig.show_keybinds.option.container.containerTextColor": "Container text color",
+  "text.autoconfig.show_keybinds.option.container.enableContainerText": "Container text Visible ",
+  "text.autoconfig.show_keybinds.option.container.containerScale": "Container text scale"
+}
