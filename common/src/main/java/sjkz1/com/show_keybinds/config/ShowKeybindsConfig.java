@@ -7,7 +7,7 @@ import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 import sjkz1.com.show_keybinds.ShowKeybinds;
 
 @Config(name = ShowKeybinds.MOD_ID)
-@Config.Gui.Background("minecraft:textures/block/bamboo_mosaic.png")
+@Config.Gui.Background("minecraft:textures/block/sculk.png")
 public final class ShowKeybindsConfig implements ConfigData {
     @ConfigEntry.Category("hotbar")
     @ConfigEntry.Gui.TransitiveObject
