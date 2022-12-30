@@ -1,14 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "sjkz1.com.cheesy_slot.mixin",
+  "package": "sjkz1.com.show_keybinds.mixin.forge",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
   "client": [
-    "AbstractContainerScreenMixin",
-    "GuiMixin",
-    "ItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

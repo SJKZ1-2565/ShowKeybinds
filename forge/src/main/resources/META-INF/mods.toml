@@ -3,29 +3,29 @@ loaderVersion = "[44,)" #mandatory This is typically bumped every Minecraft vers
 license = "All Rights Reserved"
 
 [[mods]] #mandatory
-modId = "cheesy_slot" #mandatory
+modId = "show_keybinds" #mandatory
 version = "${version}" #mandatory
-displayName = "Cheesy Slot" #mandatory
+displayName = "Minecraft Show keybinds" #mandatory
 logoFile = "icon.png" #optional
 authors = "SJKZ1" #optional
 description = '''
 This mod show what key that set for selecting slot for some people forgot what they have set.
 '''
-[[dependencies.cheesy_slot]] #optional
+[[dependencies.show_keybinds]] #optional
 modId = "forge" #mandatory
 mandatory = true #mandatory
 versionRange = "[44,)" #mandatory
 ordering = "NONE"
 side = "CLIENT"
 
-[[dependencies.cheesy_slot]]
+[[dependencies.show_keybinds]]
 modId = "cloth_config"
 mandatory = true
 versionRange = "[9.0,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.cheesy_slot]]
+[[dependencies.show_keybinds]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.19.3,)"

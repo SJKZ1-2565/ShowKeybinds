@@ -1,13 +1,13 @@
-package sjkz1.com.cheesy_slot.fabric.modmenu;
+package sjkz1.com.show_keybinds.fabric.modmenu;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.autoconfig.AutoConfig;
-import sjkz1.com.cheesy_slot.config.CheesySlotConfig;
+import sjkz1.com.show_keybinds.config.ShowKeybindsConfig;
 
 public class ModMenuIntegration implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> AutoConfig.getConfigScreen(CheesySlotConfig.class, parent).get();
+        return parent -> AutoConfig.getConfigScreen(ShowKeybindsConfig.class, parent).get();
     }
 }

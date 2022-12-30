@@ -1,23 +1,23 @@
-package sjkz1.com.cheesy_slot;
+package sjkz1.com.show_keybinds;
 
 import com.google.gson.JsonParser;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import sjkz1.com.cheesy_slot.config.CheesySlotConfig;
+import sjkz1.com.show_keybinds.config.ShowKeybindsConfig;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class CheesySlot {
+public class ShowKeybinds {
     public static final String MOD_ID = "cheesy_slot";
     public static final String MOD_NAME = "Cheesy Slot";
     public static final String VERSION = "2.0.1";
-    public static CheesySlotConfig CONFIG;
+    public static ShowKeybindsConfig CONFIG;
 
     public static void init() {
-        AutoConfig.register(CheesySlotConfig.class, GsonConfigSerializer::new);
-        CheesySlot.CONFIG = AutoConfig.getConfigHolder(CheesySlotConfig.class).getConfig();
+        AutoConfig.register(ShowKeybindsConfig.class, GsonConfigSerializer::new);
+        ShowKeybinds.CONFIG = AutoConfig.getConfigHolder(ShowKeybindsConfig.class).getConfig();
     }
 
     public static String getVersion() throws IOException {
