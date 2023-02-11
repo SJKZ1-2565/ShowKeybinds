@@ -64,7 +64,7 @@ public abstract class GuiMixin extends GuiComponent {
                     this.getFont().draw(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), v, (int) ((this.screenHeight - (22 + ShowKeybinds.CONFIG.general.hotBarHeight) + 3) / scale), hotBarColor);
                 }
             }
-            if (!itemStack.isEmpty()) {
+            if (!itemStack.isEmpty() && ShowKeybinds.CONFIG.general.offHandText) {
                 if (humanoidArm == HumanoidArm.LEFT) {
                     if (ShowKeybinds.CONFIG.general.shadowedText) {
                         this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage(), ((i - 87 - 29) / scale), (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight)) / scale), hotBarColor);

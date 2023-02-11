@@ -5,6 +5,7 @@
   "text.autoconfig.show_keybinds.option.general.hotBarHeight": "Hotbar Height",
   "text.autoconfig.show_keybinds.option.general.loggedInToasts": "Enable Log-IN Suggestion",
   "text.autoconfig.show_keybinds.option.general.enableHotBarText": "Hotbar text Visible",
+  "text.autoconfig.show_keybinds.option.general.offHandText": "Off-Hand text Visible",
   "text.autoconfig.show_keybinds.option.general.rainBowText": "Rainbow text color",
   "text.autoconfig.show_keybinds.option.general.shadowedText": "Shadowed text",
   "text.autoconfig.show_keybinds.option.general.rainbowColorSpeed": "Rainbow color speed",

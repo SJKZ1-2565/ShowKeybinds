@@ -25,6 +25,7 @@ public final class ShowKeybindsConfig implements ConfigData {
         public boolean loggedInToasts = true;
         public int hotBarHeight = 0;
         public boolean enableHotBarText = true;
+        public boolean offHandText = false;
         public boolean shadowedText = true;
         public boolean rainBowText = false;
         public long rainbowColorSpeed = 2500L;
