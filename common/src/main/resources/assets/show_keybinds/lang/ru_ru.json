@@ -1,4 +1,5 @@
 {
+  "modmenu.descriptionTranslation.show_keybinds": "Этот мод отображает горячие клавиши слотов хотбара и позволяет гибко их настроить.",
   "text.autoconfig.show_keybinds.title": "Настройки",
   "text.autoconfig.show_keybinds.category.hotbar": "Хотбар",
   "text.autoconfig.show_keybinds.option.general.hotBarTextColor": "Цвет символов на хотбаре",
