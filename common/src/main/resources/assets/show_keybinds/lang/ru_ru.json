@@ -1,0 +1,21 @@
+{
+  "modmenu.descriptionTranslation.show_keybinds": "Этот мод отображает горячие клавиши слотов хотбара и позволяет гибко их настроить.",
+  "text.autoconfig.show_keybinds.title": "Настройки",
+  "text.autoconfig.show_keybinds.category.hotbar": "Хотбар",
+  "text.autoconfig.show_keybinds.option.general.hotBarTextColor": "Цвет символов на хотбаре",
+  "text.autoconfig.show_keybinds.option.general.hotBarHeight": "Высота хотбара",
+  "text.autoconfig.show_keybinds.option.general.loggedInToasts": "Включить предложение при присоединению к миру",
+  "text.autoconfig.show_keybinds.option.general.enableHotBarText": "Отображение символов на хотбаре",
+  "text.autoconfig.show_keybinds.option.general.offHandText": "Отображение горячей клавиши второй руки",
+  "text.autoconfig.show_keybinds.option.general.rainBowText": "Радужные символы",
+  "text.autoconfig.show_keybinds.option.general.shadowedText": "Тень символов",
+  "text.autoconfig.show_keybinds.option.general.rainbowColorSpeed": "Скорость переливания радужных символов",
+  "text.autoconfig.show_keybinds.option.container.rainBowText": "Радужные символы",
+  "text.autoconfig.show_keybinds.option.container.shadowedText": "Тень символов",
+  "text.autoconfig.show_keybinds.option.general.hotBarScale": "Размер символов на хотбаре",
+  "text.autoconfig.show_keybinds.option.general.itemCountColor": "Цвет симолов отображения количества предметов",
+  "text.autoconfig.show_keybinds.category.container": "Блоки/сущности, обладающие интерфейсом",
+  "text.autoconfig.show_keybinds.option.container.containerTextColor": "Цвет символов в меню блоков/сущностей, обладающих интерфейсом",
+  "text.autoconfig.show_keybinds.option.container.enableContainerText": "Отображение симолов в меню блоков/сущностей, обладающих интерфейсом",
+  "text.autoconfig.show_keybinds.option.container.containerScale": "Размер символов в меню блоков/сущностей, обладающих интерфейсом"
+}
