@@ -134,8 +134,8 @@ public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMe
                 }
 
             }
+            poseStack.popPose();
         }
-        poseStack.popPose();
     }
 }
 
