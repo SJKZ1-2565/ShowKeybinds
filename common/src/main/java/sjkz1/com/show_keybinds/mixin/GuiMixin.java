@@ -28,12 +28,7 @@ public abstract class GuiMixin {
     @Shadow
     private int screenHeight;
     @Shadow
-    @Final
-    private ItemRenderer itemRenderer;
-
-    @Shadow
     public abstract Font getFont();
-
     @Shadow
     protected abstract Player getCameraPlayer();
 
