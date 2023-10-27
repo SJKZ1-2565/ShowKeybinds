@@ -37,6 +37,7 @@ public final class ShowKeybindsConfig implements ConfigData {
         public float hotBarScale = 1.0f;
     }
 
+
     public static class Container {
         public boolean enableContainerText = true;
         public boolean shadowedText = true;
