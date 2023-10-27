@@ -7,8 +7,8 @@
   ],
   "client": [
     "AbstractContainerScreenMixin",
-    "GuiMixin",
-    "ItemRendererMixin"
+    "GuiGraphicsMixin",
+    "GuiMixin"
   ],
   "injectors": {
     "defaultRequire": 1

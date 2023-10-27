@@ -1,9 +1,10 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "sjkz1.com.show_keybinds.mixin.forge",
+  "package": "sjkz1.com.show_keybinds.forge.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BuiltInMixin"
   ],
   "client": [
   ],

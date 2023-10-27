@@ -1,14 +1,11 @@
 package sjkz1.com.show_keybinds.mixin;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
@@ -16,110 +13,100 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 import sjkz1.com.show_keybinds.ShowKeybinds;
 
 import java.awt.*;
 import java.util.Arrays;
 
 @Mixin(Gui.class)
-public abstract class GuiMixin extends GuiComponent {
+public abstract class GuiMixin {
     @Shadow
     private int screenWidth;
+    @Shadow
+    private int screenHeight;
+    @Shadow
+    @Final
+    private ItemRenderer itemRenderer;
 
     @Shadow
     public abstract Font getFont();
 
     @Shadow
-    private int screenHeight;
-
-    @Shadow
     protected abstract Player getCameraPlayer();
 
-    @Shadow
-    @Final
-    private ItemRenderer itemRenderer;
-
     @Inject(method = "renderHotbar", at = @At(value = "TAIL"))
-    public void renderHotBar(float f, PoseStack poseStack, CallbackInfo ci) {
+    public void renderHotBar(float f, GuiGraphics guiGraphics, CallbackInfo ci) {
         if (ShowKeybinds.CONFIG.general.enableHotBarText) {
             Player player = this.getCameraPlayer();
-            poseStack.pushPose();
-            poseStack.translate(0f, 0f, this.getBlitOffset() + 350f);
+            guiGraphics.pose().pushPose();
+            guiGraphics.pose().translate(0f, 0f, 350f);
             float scale = ShowKeybinds.CONFIG.general.hotBarScale;
-            poseStack.scale(scale, scale, scale);
+            guiGraphics.pose().scale(scale, scale, scale);
             int i = this.screenWidth / 2;
             ItemStack itemStack = player.getOffhandItem();
             HumanoidArm humanoidArm = player.getMainArm().getOpposite();
             var list = Minecraft.getInstance().options.keyHotbarSlots;
             var offHandKey = Minecraft.getInstance().options.keySwapOffhand;
-            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % ShowKeybinds.CONFIG.general.rainbowColorSpeed, 0.8F, 0.8F));
+            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % ShowKeybinds.CONFIG.general.rainbowColorSpeed,
+                    0.8F,
+                    0.8F));
             var hotBarColor = ShowKeybinds.CONFIG.general.rainBowText ? rainbow : ShowKeybinds.CONFIG.general.hotBarTextColor;
             for (int j = 0; j < Arrays.stream(list).toList().size(); j++) {
                 final var v = (i - 91 - 15 + (j + 1) * 20) / scale;
-                if (ShowKeybinds.CONFIG.general.shadowedText) {
-                    this.getFont().drawShadow(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), v, (int) ((this.screenHeight - (22 + ShowKeybinds.CONFIG.general.hotBarHeight) + 3) / scale), hotBarColor);
-                } else {
-                    this.getFont().draw(poseStack, Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(), v, (int) ((this.screenHeight - (22 + ShowKeybinds.CONFIG.general.hotBarHeight) + 3) / scale), hotBarColor);
-                }
+                guiGraphics.drawString(this.getFont(),
+                        Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(),
+                        (int) v,
+                        (int) ((this.screenHeight - (22 + ShowKeybinds.CONFIG.general.hotBarHeight) + 3) / scale),
+                        hotBarColor,
+                        ShowKeybinds.CONFIG.general.shadowedText);
             }
             if (!itemStack.isEmpty() && ShowKeybinds.CONFIG.general.offHandText) {
                 if (humanoidArm == HumanoidArm.LEFT) {
-                    if (ShowKeybinds.CONFIG.general.shadowedText) {
-                        this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage(), ((i - 87 - 29) / scale), (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight)) / scale), hotBarColor);
-                    } else {
-                        this.getFont().draw(poseStack, offHandKey.getTranslatedKeyMessage(), ((i - 87 - 29) / scale), (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight)) / scale), hotBarColor);
-                    }
+                    guiGraphics.drawString(this.getFont(),
+                            offHandKey.getTranslatedKeyMessage(),
+                            (int) ((i - 87 - 29) / scale),
+                            (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight)) / scale),
+                            hotBarColor,
+                            ShowKeybinds.CONFIG.general.shadowedText);
                 } else {
-                    if (ShowKeybinds.CONFIG.general.shadowedText) {
-                        this.getFont().drawShadow(poseStack, offHandKey.getTranslatedKeyMessage(), ((i + 102) / scale), (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight)) / scale), hotBarColor);
-                    } else {
-                        this.getFont().draw(poseStack, offHandKey.getTranslatedKeyMessage(), ((i + 102) / scale), (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight)) / scale), hotBarColor);
-                    }
+                    guiGraphics.drawString(this.getFont(),
+                            offHandKey.getTranslatedKeyMessage(),
+                            (int) ((i + 102) / scale),
+                            (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight)) / scale),
+                            hotBarColor,
+                            ShowKeybinds.CONFIG.general.shadowedText);
                 }
             }
-            poseStack.popPose();
+            guiGraphics.pose().popPose();
         }
+
     }
 
-    @Redirect(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;blit(Lcom/mojang/blaze3d/vertex/PoseStack;IIIIII)V", ordinal = 0))
-    public void renderHotbar(Gui instance, PoseStack poseStack, int screenWidth, int screenHeight, int w, int x, int y, int z) {
-        int i = this.screenWidth / 2;
-        this.blit(poseStack, i - 91, this.screenHeight - (22 + ShowKeybinds.CONFIG.general.hotBarHeight), 0, 0, 182, 22);
+    @ModifyArgs(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V"))
+    public void renderHotbar(Args args) {
+        float a1 = args.get(1);
+        args.set(1, a1 - ShowKeybinds.CONFIG.general.hotBarHeight);
     }
 
-    @Redirect(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;blit(Lcom/mojang/blaze3d/vertex/PoseStack;IIIIII)V", ordinal = 1))
-    public void renderHotbar1(Gui instance, PoseStack poseStack, int screenWidth, int screenHeight, int w, int x, int y, int z) {
-        int i = this.screenWidth / 2;
-        this.blit(poseStack, i - 91 - 1 + getCameraPlayer().getInventory().selected * 20, this.screenHeight - (22 + ShowKeybinds.CONFIG.general.hotBarHeight) - 1, 0, 22, 24, 22);
+    @ModifyArgs(method = "renderSelectedItemName", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Lnet/minecraft/network/chat/Component;III)I"))
+    public void renderSelectedItemName(Args args) {
+        int a1 = args.get(3);
+        args.set(3, a1 - ShowKeybinds.CONFIG.general.hotBarHeight);
     }
 
-    @Redirect(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;blit(Lcom/mojang/blaze3d/vertex/PoseStack;IIIIII)V", ordinal = 2))
-    public void renderHotbar2(Gui instance, PoseStack poseStack, int screenWidth, int screenHeight, int w, int x, int y, int z) {
-        int i = this.screenWidth / 2;
-        this.blit(poseStack, i - 91 - 29, this.screenHeight - (23 + ShowKeybinds.CONFIG.general.hotBarHeight), 24, 22, 29, 24);
+    @ModifyArgs(method = "renderSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;II)V"))
+    public void renderSlot$renderItemDecorations(Args args) {
+        int a1 = args.get(3);
+        args.set(3, a1 - ShowKeybinds.CONFIG.general.hotBarHeight);
     }
 
-    @Redirect(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;blit(Lcom/mojang/blaze3d/vertex/PoseStack;IIIIII)V", ordinal = 3))
-    public void renderHotbar3(Gui instance, PoseStack poseStack, int screenWidth, int screenHeight, int w, int x, int y, int z) {
-        int i = this.screenWidth / 2;
-        this.blit(poseStack, i + 91, this.screenHeight - (23 + ShowKeybinds.CONFIG.general.hotBarHeight), 53, 22, 29, 24);
-    }
-
-    @Redirect(method = "renderSelectedItemName", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Font;drawShadow(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/network/chat/Component;FFI)I"))
-    public int renderHotbar3(Font instance, PoseStack poseStack, Component component, float f, float g, int i) {
-        return this.getFont().drawShadow(poseStack, component, (float) f, (float) (g - ShowKeybinds.CONFIG.general.hotBarHeight), 0xFFFFFF + (i << 24));
-    }
-
-    @Redirect(method = "renderSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/ItemRenderer;renderAndDecorateItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;III)V"))
-    public void renderSlot(ItemRenderer instance, LivingEntity livingEntity, ItemStack itemStack, int i, int j, int k) {
-        this.itemRenderer.renderAndDecorateItem(livingEntity, itemStack, i, (j - ShowKeybinds.CONFIG.general.hotBarHeight), k);
-    }
-
-    @Redirect(method = "renderSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/ItemRenderer;renderGuiItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;II)V"))
-    public void renderSlot(ItemRenderer instance, Font font, ItemStack itemStack, int i, int j) {
-        this.itemRenderer.renderGuiItemDecorations(font, itemStack, i, (j - ShowKeybinds.CONFIG.general.hotBarHeight));
+    @ModifyArgs(method = "renderSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;renderItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;III)V"))
+    public void renderSlot$renderItem(Args args) {
+        int a1 = args.get(3);
+        args.set(3, a1 - ShowKeybinds.CONFIG.general.hotBarHeight);
     }
 
 }

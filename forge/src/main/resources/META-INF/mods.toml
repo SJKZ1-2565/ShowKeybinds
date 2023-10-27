@@ -1,33 +1,35 @@
-modLoader = "javafml" #mandatory
-loaderVersion = "[44,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+modLoader = "javafml"
+loaderVersion = "[48.0.33,)"
 license = "All Rights Reserved"
 
-[[mods]] #mandatory
-modId = "show_keybinds" #mandatory
-version = "${version}" #mandatory
-displayName = "Minecraft Show keybinds" #mandatory
+[[mods]]
+modId = "show_keybinds"
+version = "${version}"
+displayName = "Minecraft Show keybinds"
 logoFile = "icon.png" #optional
 authors = "SJKZ1" #optional
 description = '''
 This mod show what key that set for selecting slot for some people forgot what they have set.
 '''
-[[dependencies.show_keybinds]] #optional
+[[dependencies.show_keybinds]]
 modId = "forge" #mandatory
 mandatory = true #mandatory
-versionRange = "[44,)" #mandatory
+versionRange = "[48.0.33,)" #mandatory
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.show_keybinds]]
 modId = "cloth_config"
 mandatory = true
-versionRange = "[9.0,)"
-ordering = "NONE"
+versionRange = "[10.0.8,)"
+ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.show_keybinds]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.3,)"
+versionRange = "[1.20.2,)"
 ordering = "NONE"
 side = "BOTH"
+
+

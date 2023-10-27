@@ -12,13 +12,18 @@ import java.net.URL;
 public class ShowKeybinds {
     public static final String MOD_ID = "show_keybinds";
     public static final String MOD_NAME = "Show Keybinds";
-    public static final String VERSION = "2.0.5";
+    public static final String VERSION = "3.2.0";
     public static ShowKeybindsConfig CONFIG;
 
     public static void init() {
+
+    }
+
+    public static void registerConfig() {
         AutoConfig.register(ShowKeybindsConfig.class, GsonConfigSerializer::new);
         ShowKeybinds.CONFIG = AutoConfig.getConfigHolder(ShowKeybindsConfig.class).getConfig();
     }
+
 
     public static String getVersion() throws IOException {
         URL url1 = new URL("https://raw.githubusercontent.com/SJKZ1-2565/modJSON-URL/master/show_keybinds.json");
