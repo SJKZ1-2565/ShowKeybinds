@@ -10,7 +10,7 @@
   "contact": {},
   "license": "All-Rights-Reserved",
   "icon": "icon.png",
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "main": [
       "sjkz1.com.show_keybinds.fabric.ShowKeybindsFabric"
