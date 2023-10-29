@@ -4,11 +4,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import org.spongepowered.asm.mixin.Final;
+import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -45,32 +44,33 @@ public abstract class GuiMixin {
             HumanoidArm humanoidArm = player.getMainArm().getOpposite();
             var list = Minecraft.getInstance().options.keyHotbarSlots;
             var offHandKey = Minecraft.getInstance().options.keySwapOffhand;
-            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % ShowKeybinds.CONFIG.general.rainbowColorSpeed,
-                    0.8F,
-                    0.8F));
+            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F));
             var hotBarColor = ShowKeybinds.CONFIG.general.rainBowText ? rainbow : ShowKeybinds.CONFIG.general.hotBarTextColor;
+
             for (int j = 0; j < Arrays.stream(list).toList().size(); j++) {
-                final var v = (i - 91 - 15 + (j + 1) * 20) / scale;
+                final var v = (i - 92 - 15 + (j + 1) * 20) / scale;
+                int textY = player.inventoryMenu.slots.get(j+36).getItem().is(Items.LIGHT) ? 7 : 0;
                 guiGraphics.drawString(this.getFont(),
                         Arrays.stream(list).toList().get(j).getTranslatedKeyMessage(),
                         (int) v,
-                        (int) ((this.screenHeight - (22 + ShowKeybinds.CONFIG.general.hotBarHeight) + 3) / scale),
+                        (int) ((this.screenHeight - (21 + ShowKeybinds.CONFIG.general.hotBarHeight) + 3 + textY) / scale),
                         hotBarColor,
                         ShowKeybinds.CONFIG.general.shadowedText);
             }
             if (!itemStack.isEmpty() && ShowKeybinds.CONFIG.general.offHandText) {
+                int textY = player.inventoryMenu.slots.get(45).getItem().is(Items.LIGHT) ? 8 : 0;
                 if (humanoidArm == HumanoidArm.LEFT) {
                     guiGraphics.drawString(this.getFont(),
                             offHandKey.getTranslatedKeyMessage(),
                             (int) ((i - 87 - 29) / scale),
-                            (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight)) / scale),
+                            (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight) + textY) / scale),
                             hotBarColor,
                             ShowKeybinds.CONFIG.general.shadowedText);
                 } else {
                     guiGraphics.drawString(this.getFont(),
                             offHandKey.getTranslatedKeyMessage(),
                             (int) ((i + 102) / scale),
-                            (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight)) / scale),
+                            (int) ((this.screenHeight - (19 + ShowKeybinds.CONFIG.general.hotBarHeight) + textY) / scale),
                             hotBarColor,
                             ShowKeybinds.CONFIG.general.shadowedText);
                 }

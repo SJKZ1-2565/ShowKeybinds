@@ -11,7 +11,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Items;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -22,6 +24,8 @@ import java.awt.*;
 @Mixin(AbstractContainerScreen.class)
 public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMenu> extends Screen implements MenuAccess<T> {
 
+    @Shadow @Nullable protected Slot hoveredSlot;
+
     protected AbstractContainerScreenMixin(Component component) {
         super(component);
     }
@@ -29,6 +33,10 @@ public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMe
     @Inject(method = "renderSlot", at = @At(value = "TAIL"))
     public void renderSlot(GuiGraphics guiGraphics, Slot slot, CallbackInfo ci) {
         if (ShowKeybinds.CONFIG.container.enableContainerText) {
+            if(hoveredSlot != null) {
+                System.out.println("X: " + hoveredSlot.x);
+                System.out.println(hoveredSlot.y);
+            }
             guiGraphics.pose().pushPose();
             guiGraphics.pose().translate(0f, 0f, 350f);
             float scale = ShowKeybinds.CONFIG.container.containerScale;
@@ -36,7 +44,7 @@ public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMe
             var list = Minecraft.getInstance().options.keyHotbarSlots;
             int textY = slot.getItem().is(Items.LIGHT) ? 8 : 0;
             var screen = this.minecraft.screen;
-            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F));
+            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500F, 0.8F,0.8F));
             var containerColor = ShowKeybinds.CONFIG.container.rainBowText ? rainbow : ShowKeybinds.CONFIG.container.containerTextColor;
             if (!(screen instanceof CreativeModeInventoryScreen || screen instanceof MerchantScreen)) {
                 if (slot.y == 142 || slot.y == 143 || slot.y == 197 || slot.y == 109 || slot.y == 195) {
@@ -44,61 +52,61 @@ public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMe
                         case 8, 36 -> guiGraphics.drawString(this.font,
                                 list[0].getTranslatedKeyMessage(),
                                 (int) (slot.x / scale),
-                                (int) ((slot.y) / scale) + textY + textY,
+                                (int) ((slot.y) / scale) + textY,
                                 containerColor,
                                 ShowKeybinds.CONFIG.container.shadowedText);
                         case 26, 54 -> guiGraphics.drawString(this.font,
                                 list[1].getTranslatedKeyMessage(),
                                 (int) (slot.x / scale),
-                                (int) ((slot.y) / scale) + textY + textY,
+                                (int) ((slot.y) / scale) + textY,
                                 containerColor,
                                 ShowKeybinds.CONFIG.container.shadowedText);
                         case 44, 72 -> guiGraphics.drawString(this.font,
                                 list[2].getTranslatedKeyMessage(),
                                 (int) (slot.x / scale),
-                                (int) ((slot.y) / scale) + textY + textY,
+                                (int) ((slot.y) / scale) + textY,
                                 containerColor,
                                 ShowKeybinds.CONFIG.container.shadowedText);
                         case 62, 90 -> guiGraphics.drawString(this.font,
                                 list[3].getTranslatedKeyMessage(),
                                 (int) (slot.x / scale),
-                                (int) ((slot.y) / scale) + textY + textY,
+                                (int) ((slot.y) / scale) + textY,
                                 containerColor,
                                 ShowKeybinds.CONFIG.container.shadowedText);
                         case 80, 108 -> guiGraphics.drawString(this.font,
                                 list[4].getTranslatedKeyMessage(),
                                 (int) (slot.x / scale),
-                                (int) ((slot.y) / scale) + textY + textY,
+                                (int) ((slot.y) / scale) + textY,
                                 containerColor,
                                 ShowKeybinds.CONFIG.container.shadowedText);
                         case 98, 126 -> guiGraphics.drawString(this.font,
                                 list[5].getTranslatedKeyMessage(),
                                 (int) (slot.x / scale),
-                                (int) ((slot.y) / scale) + textY + textY,
+                                (int) ((slot.y) / scale) + textY,
                                 containerColor,
                                 ShowKeybinds.CONFIG.container.shadowedText);
                         case 116, 144 -> guiGraphics.drawString(this.font,
                                 list[6].getTranslatedKeyMessage(),
                                 (int) (slot.x / scale),
-                                (int) ((slot.y) / scale) + textY + textY,
+                                (int) ((slot.y) / scale) + textY,
                                 containerColor,
                                 ShowKeybinds.CONFIG.container.shadowedText);
                         case 134, 162 -> guiGraphics.drawString(this.font,
                                 list[7].getTranslatedKeyMessage(),
                                 (int) (slot.x / scale),
-                                (int) ((slot.y) / scale) + textY + textY,
+                                (int) ((slot.y) / scale) + textY,
                                 containerColor,
                                 ShowKeybinds.CONFIG.container.shadowedText);
                         case 152, 180 -> guiGraphics.drawString(this.font,
                                 list[8].getTranslatedKeyMessage(),
                                 (int) (slot.x / scale),
-                                (int) ((slot.y) / scale) + textY + textY,
+                                (int) ((slot.y) / scale) + textY,
                                 containerColor,
                                 ShowKeybinds.CONFIG.container.shadowedText);
                     }
                 }
             } else {
-                if (slot.y == 112 || slot.y == 142) {
+                if (slot.y == 112 || slot.y == 142 || slot.y == 20) {
                     switch (slot.x) {
                         case 9, 108 -> guiGraphics.drawString(this.font,
                                 list[0].getTranslatedKeyMessage(),
@@ -154,6 +162,13 @@ public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMe
                                 (int) ((slot.y) / scale) + textY,
                                 containerColor,
                                 ShowKeybinds.CONFIG.container.shadowedText);
+                        case 35 ->
+                                guiGraphics.drawString(this.font,
+                                        Minecraft.getInstance().options.keySwapOffhand.getTranslatedKeyMessage(),
+                                        (int) (slot.x / scale),
+                                        (int) ((slot.y) / scale) + textY,
+                                        containerColor,
+                                        ShowKeybinds.CONFIG.container.shadowedText);
                     }
                 }
 
