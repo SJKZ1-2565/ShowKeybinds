@@ -28,6 +28,6 @@ public class ShowKeybinds {
     public static String getVersion() throws IOException {
         URL url1 = new URL("https://raw.githubusercontent.com/SJKZ1-2565/modJSON-URL/master/show_keybinds.json");
         InputStreamReader reader1 = new InputStreamReader(url1.openStream());
-        return JsonParser.parseReader(reader1).getAsJsonObject().get("1.19_latest").getAsString();
+        return JsonParser.parseReader(reader1).getAsJsonObject().get("1.20_latest").getAsString();
     }
 }
