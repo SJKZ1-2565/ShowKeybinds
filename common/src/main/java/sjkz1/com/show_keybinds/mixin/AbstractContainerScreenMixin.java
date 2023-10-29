@@ -11,9 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Items;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -24,8 +22,6 @@ import java.awt.*;
 @Mixin(AbstractContainerScreen.class)
 public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMenu> extends Screen implements MenuAccess<T> {
 
-    @Shadow @Nullable protected Slot hoveredSlot;
-
     protected AbstractContainerScreenMixin(Component component) {
         super(component);
     }
@@ -33,10 +29,6 @@ public abstract class AbstractContainerScreenMixin<T extends AbstractContainerMe
     @Inject(method = "renderSlot", at = @At(value = "TAIL"))
     public void renderSlot(GuiGraphics guiGraphics, Slot slot, CallbackInfo ci) {
         if (ShowKeybinds.CONFIG.container.enableContainerText) {
-            if(hoveredSlot != null) {
-                System.out.println("X: " + hoveredSlot.x);
-                System.out.println(hoveredSlot.y);
-            }
             guiGraphics.pose().pushPose();
             guiGraphics.pose().translate(0f, 0f, 350f);
             float scale = ShowKeybinds.CONFIG.container.containerScale;
