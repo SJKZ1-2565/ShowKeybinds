@@ -1,30 +1,40 @@
 {
   "schemaVersion": 1,
-  "id": "show_keybinds",
+  "id": "showkeybinds",
   "version": "${version}",
-  "name": "Minecraft Show keybinds",
-  "description": "This mod show what key that set for selecting slot for some people forgot what they have set.",
+  "name": "Show Keybinds",
+  "description": "This mod display key binding on the inventory slot.",
   "authors": [
-    "SJKZ1"
+    ""
   ],
-  "contact": {},
+  "contact": {
+    "homepage": ""
+  },
   "license": "All-Rights-Reserved",
-  "icon": "icon.png",
-  "environment": "client",
+  "icon": "assets/showkeybinds/icon.png",
+  "environment": "*",
   "entrypoints": {
     "main": [
-      "sjkz1.com.show_keybinds.fabric.ShowKeybindsFabric"
+      "com.sjkz1.showkeybinds.fabric.ShowkeybindsFabric"
+    ],
+    "client": [
+      "com.sjkz1.showkeybinds.fabric.client.ShowkeybindsFabricClient"
     ],
     "modmenu": [
-      "sjkz1.com.show_keybinds.fabric.modmenu.ModMenuIntegration"
+      "com.sjkz1.showkeybinds.fabric.modmenu.ShowKeybindsModMenuIntegration"
     ]
   },
   "mixins": [
-    "show_keybinds.mixins.json",
-    "show_keybinds-common.mixins.json"
+    "showkeybinds.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.24",
-    "minecraft": ">=1.20.2"
+    "fabricloader": ">=0.16.2",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "architectury": ">=13.0.6",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
   }
 }

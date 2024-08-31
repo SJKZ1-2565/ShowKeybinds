@@ -1,0 +1,20 @@
+{
+  "text.autoconfig.showkeybinds.title": "Show Keybinds Config",
+  "text.autoconfig.showkeybinds.category.hotbar": "Hotbar",
+  "text.autoconfig.showkeybinds.option.general.hotBarTextColor": "Hot-bar keybindings color",
+  "text.autoconfig.showkeybinds.option.general.hotBarHeight": "Hot-bar Y offset",
+  "text.autoconfig.showkeybinds.option.general.loggedInToasts": "Show login Suggestion Toast",
+  "text.autoconfig.showkeybinds.option.general.enableHotBarText": "Show Show keybindings on hot-bar",
+  "text.autoconfig.showkeybinds.option.general.offHandText": "Show keybindings on Off-Hand",
+  "text.autoconfig.showkeybinds.option.general.rainBowText": "Rainbow font",
+  "text.autoconfig.showkeybinds.option.general.shadowedText": "Shadow font",
+  "text.autoconfig.showkeybinds.option.general.rainBowItemText": "Rainbow item count color",
+  "text.autoconfig.showkeybinds.option.container.rainBowText": "Rainbow font",
+  "text.autoconfig.showkeybinds.option.container.shadowedText": "Shadow font",
+  "text.autoconfig.showkeybinds.option.general.hotBarScale": "Hot-bar text size",
+  "text.autoconfig.showkeybinds.option.general.itemCountColor": "Item count color",
+  "text.autoconfig.showkeybinds.category.container": "Container",
+  "text.autoconfig.showkeybinds.option.container.containerTextColor": "Container keybindings color",
+  "text.autoconfig.showkeybinds.option.container.enableContainerText": "Show keybindings on Container",
+  "text.autoconfig.showkeybinds.option.container.containerScale": "Container text scale"
+}

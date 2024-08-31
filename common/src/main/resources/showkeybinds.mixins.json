@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "com.sjkz1.showkeybinds.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "MixinAbstractContainerScreen",
+    "MixinGui",
+    "MixinGuiGraphics"
+  ],
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

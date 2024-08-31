@@ -1,0 +1,39 @@
+modLoader = "javafml"
+loaderVersion = "[2,)"
+#issueTrackerURL = ""
+license = "All Rights Reserved"
+
+[[mods]]
+modId = "showkeybinds"
+version = "${version}"
+displayName = "Show Keybinds"
+logoFile = "icon.png"
+authors = ""
+description = '''
+This mod display key binding on the inventory slot.
+'''
+#logoFile = ""
+
+[[dependencies.showkeybinds]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.showkeybinds]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.showkeybinds]]
+modId = "architectury"
+type = "required"
+versionRange = "[13.0.6,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "showkeybinds.mixins.json"
