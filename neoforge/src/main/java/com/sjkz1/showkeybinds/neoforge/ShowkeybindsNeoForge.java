@@ -10,7 +10,6 @@ import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 @Mod(Showkeybinds.MOD_ID)
 public final class ShowkeybindsNeoForge {
     public ShowkeybindsNeoForge() {
-        // Run our common setup.
         Showkeybinds.init();
         Showkeybinds.registerConfig();
         ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> (mc, screen) -> AutoConfig.getConfigScreen(ShowKeybindsConfig.class, screen).get());
