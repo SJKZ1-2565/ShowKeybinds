@@ -67,8 +67,6 @@ remapJar {
 }
 
 
-import com.modrinth.minotaur.dependencies.ModDependency
-
 modrinth {
     token.set(System.getenv("MODRINTH_TOKEN"))
     projectId.set("Vp8aNw60") // This can be the project ID or the slug. Either will work!
