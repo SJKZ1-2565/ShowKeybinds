@@ -7,7 +7,7 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 
 @Config(name = Showkeybinds.MOD_ID)
-@Config.Gui.Background("minecraft:textures/block/copper_bulb_lit_powered.png")
+@Config.Gui.Background("minecraft:textures/block/cherry_planks.png")
 public final class ShowKeybindsConfig implements ConfigData {
     @ConfigEntry.Category("hotbar")
     @ConfigEntry.Gui.TransitiveObject
