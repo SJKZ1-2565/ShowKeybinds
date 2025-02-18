@@ -1,7 +1,6 @@
 package com.sjkz1.showkeybinds.mixin;
 
 import com.sjkz1.showkeybinds.Showkeybinds;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
@@ -31,8 +30,8 @@ public abstract class MixinGui {
     @Shadow
     public abstract Font getFont();
 
-    @Inject(method = "renderItemHotbar", at = @At(value = "TAIL"))
-    public void renderHotBar(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci) {
+    @Inject(method = "renderHotbar", at = @At(value = "TAIL"))
+    public void renderHotBar(float f, GuiGraphics guiGraphics, CallbackInfo ci) {
         if (Showkeybinds.CONFIG.general.enableHotBarText) {
             Player player = this.getCameraPlayer();
             guiGraphics.pose().pushPose();
