@@ -1,7 +1,6 @@
 package com.sjkz1.showkeybinds;
 
 import com.sjkz1.showkeybinds.config.ShowKeybindsConfig;
-import dev.architectury.platform.Platform;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import org.slf4j.Logger;
@@ -19,7 +18,5 @@ public final class Showkeybinds {
     }
 
     public static void init() {
-        String platformType = Platform.isFabric() ? "Fabric" : Platform.isMinecraftForge() ? "Forge" : Platform.isNeoForge() ? "NeoForge" : "";
-        LOGGER.info("Hello {} user!", platformType);
     }
 }
