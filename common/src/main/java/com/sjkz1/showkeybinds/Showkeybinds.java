@@ -1,7 +1,6 @@
 package com.sjkz1.showkeybinds;
 
 import com.sjkz1.showkeybinds.config.ShowKeybindsConfig;
-import dev.architectury.platform.Platform;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import org.slf4j.Logger;
