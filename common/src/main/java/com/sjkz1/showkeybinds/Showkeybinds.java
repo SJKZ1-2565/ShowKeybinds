@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public final class Showkeybinds {
     public static final String MOD_ID = "showkeybinds";
-    public static final Logger LOGGER = LoggerFactory.getLogger("jin-scary-myth");
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static ShowKeybindsConfig CONFIG;
 
 
