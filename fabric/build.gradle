@@ -3,6 +3,8 @@ import com.modrinth.minotaur.dependencies.VersionDependency
 plugins {
     id 'com.github.johnrengelman.shadow'
     id "com.modrinth.minotaur" version "2.+"
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
+
 }
 
 architectury {
@@ -68,6 +70,25 @@ remapJar {
     input.set shadowJar.archiveFile
 }
 
+curseforge {
+    apiKey = System.getenv("CURSFORGE_TOKEN")
+    project {
+        id = "684957"
+        changelog = rootProject.file("CHANGE_LOG.md")
+        changelogType = "markdown"
+        releaseType = "release"
+        addGameVersion "Fabric"
+        addGameVersion minecraft_version
+        addGameVersion "Java 17"
+        mainArtifact remapJar.archiveFile
+        afterEvaluate {
+            uploadTask.dependsOn(remapJar)
+        }
+    }
+    options {
+        forgeGradleIntegration = false
+    }
+}
 
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
@@ -88,3 +109,4 @@ modrinth {
 task publishToModSites {
     publishToModSites.dependsOn modrinth
 }
+
