@@ -1,3 +1,5 @@
+import com.modrinth.minotaur.dependencies.VersionDependency
+
 plugins {
     id 'com.github.johnrengelman.shadow'
     id "com.modrinth.minotaur" version "2.+"
@@ -68,16 +70,19 @@ remapJar {
 
 
 modrinth {
-    token.set(System.getenv("MODRINTH_TOKEN"))
-    projectId.set("Vp8aNw60") // This can be the project ID or the slug. Either will work!
-    versionNumber.set("4.0.0") // You don't need to set this manually. Will fail if Modrinth has this version already
-    versionType.set("release") // This is the default -- can also be `beta` or `alpha`
-    uploadFile.set(tasks.jar) // With Loom, this MUST be set to `remapJar` instead of `jar`!
-    gameVersions.add("1.21.1")
-    loaders.add("fabric")
-    dependencies {
-        required.project("fabric-api")
-    }
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "zaElPFa3"
+    versionName = "Show Keybinds ${rootProject.mod_version} ${minecraft_version} Fabric"
+    versionNumber = rootProject.minecraft_version + "-v-" +rootProject.mod_version + "-fabric"
+    uploadFile = remapJar
+    changelog = rootProject.file("CHANGE_LOG.md").text
+    gameVersions = ["${minecraft_version}"]
+    loaders = ["fabric"]
+    dependencies = [
+            new VersionDependency('WbL7MStR', 'required'),
+            new VersionDependency('2xQdCMyG', 'optional'),
+            new VersionDependency('lEkperf6', 'required')
+    ]
 }
 
 task publishToModSites {
