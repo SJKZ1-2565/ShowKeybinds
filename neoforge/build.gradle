@@ -1,5 +1,8 @@
+import com.modrinth.minotaur.dependencies.*
+
 plugins {
     id 'com.github.johnrengelman.shadow'
+    id "com.modrinth.minotaur" version "2.+"
 }
 
 architectury {
@@ -57,4 +60,19 @@ shadowJar {
 
 remapJar {
     input.set shadowJar.archiveFile
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "zaElPFa3"
+    versionName = "Show Keybinds ${rootProject.mod_version} ${minecraft_version} NeoForge"
+    versionNumber = rootProject.minecraft_version + "-" + rootProject.mod_version + "-neoforge"
+    uploadFile = remapJar
+    changelog = rootProject.file("CHANGE_LOG.md").text
+    gameVersions = ["${minecraft_version}"]
+    loaders = ["neoforge"]
+    dependencies {
+        optional.version "cloth-config", "15.0.140+neoforge"
+        required.version "architectury-api", "13.0.8+neoforge"
+    }
 }
