@@ -37,7 +37,7 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
             var screen = Minecraft.getInstance().screen;
             int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500F, 0.8F, 0.8F));
             var containerColor = Showkeybinds.CONFIG.container.rainBowText ? rainbow : Showkeybinds.CONFIG.container.containerTextColor;
-
+            var showOffHandText = Showkeybinds.CONFIG.general.offHandText;
             boolean isCreativeOrMerchantScreen = screen instanceof CreativeModeInventoryScreen || screen instanceof MerchantScreen;
             boolean isSpecialSlotY = isCreativeOrMerchantScreen ? (slot.y == 112 || slot.y == 142 || slot.y == 20) : (slot.y == 142 || slot.y == 143 || slot.y == 197 || slot.y == 109 || slot.y == 195);
 
@@ -57,6 +57,24 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
                                 Showkeybinds.CONFIG.container.shadowedText);
                     }
                 }
+            }
+            //This fixed off-hand key render when it's survival inventory
+            if (slot.x == 77 && slot.y == 62 && showOffHandText) {
+                var keyMessage = Minecraft.getInstance().options.keySwapOffhand.getTranslatedKeyMessage();
+                guiGraphics.drawString(this.font,
+                        keyMessage,
+                        (int) (slot.x / scale),
+                        (int) ((slot.y) / scale) + textY,
+                        containerColor,
+                        Showkeybinds.CONFIG.container.shadowedText);
+            }
+            if (Showkeybinds.DEBUG) {
+                guiGraphics.drawString(this.font,
+                        String.valueOf(slot.x),
+                        (int) (slot.x / scale),
+                        (int) ((slot.y) / scale) + textY,
+                        containerColor,
+                        Showkeybinds.CONFIG.container.shadowedText);
             }
 
             guiGraphics.pose().popPose();
