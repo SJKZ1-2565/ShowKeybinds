@@ -10,6 +10,7 @@ public final class Showkeybinds {
     public static final String MOD_ID = "showkeybinds";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static ShowKeybindsConfig CONFIG;
+    public static boolean DEBUG = false;
 
 
     public static void registerConfig() {
