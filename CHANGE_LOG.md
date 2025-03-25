@@ -1,1 +1,1 @@
-* Fixed incorrect Java vesion(again)
+* Fixed off-hand key not rendering 
