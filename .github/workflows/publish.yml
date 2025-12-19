@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version (Example: 21.10.1.0.0)'
+        description: 'Version (Example: 21.10.0.0)'
         required: true
 
 jobs:
@@ -11,21 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Create version tag
-        id: tag
         uses: actions/github-script@v8
         with:
           script: |
-            const version = '${{ github.event.inputs.version }}';
-            const response = await github.rest.git.createRef({
+            github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: `refs/tags/${version}`,
+              ref: "refs/tags/${{ github.event.inputs.version }}",
               sha: context.sha
-            });
-            core.setOutput('tag_name', version);
+            })
 
       - name: Fetch tags
         run: git fetch --tags
@@ -37,7 +34,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Cache Gradle packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
@@ -49,52 +46,5 @@ jobs:
       - name: Grant execute permission to gradlew
         run: chmod +x gradlew
 
-      - name: Build with Gradle
-        run: ./gradlew build
-
-      - name: Upload build
-        uses: actions/upload-artifact@v4
-        with:
-          name: Artifacts
-          path:
-            ./common/build/libs/
-            ./fabric/build/libs/
-            ./neoforge/build/libs/
-
-      - name: Download build
-        uses: actions/download-artifact@v4
-        with:
-          name: Artifacts
-          path: |
-            ./common/build/libs/
-            ./fabric/build/libs/
-            ./neoforge/build/libs/
-
-      - name: Create release and upload files
-        id: release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.tag.outputs.tag_name }}
-          draft: false
-          prerelease: false
-          files: |
-            ./common/build/libs/*.jar
-            ./fabric/build/libs/*.jar
-            ./neoforge/build/libs/*.jar
-
-      - name: Set current date
-        id: date
-        run: |
-          echo "::set-output name=short::$(date +'%Y-%m-%d')"
-          echo "::set-output name=long::$(date +'%Y-%m-%d %H:%M')"
-
-      - name: Post release on Discord
-        uses: tsickert/discord-webhook@v6.0.0
-        with:
-          webhook-url: ${{ secrets.DISCORD_RELEASE_WEBHOOK_URL }}
-          embed-color: "#d13d9d"
-          embed-title: ${{format('Show Keybinds {0}', steps.tag.outputs.tag_name)}}
-          embed-url: ${{ steps.release.outputs.url }}
-          embed-timestamp: ${{ steps.date.outputs.long }}
-      - name: Publish to CurseForge and Modrinth
+      - name: Publish Mod to CurseForge/Modrinth
         run: ./gradlew curseforgeModrinthNeoForge curseforgeModrinthFabric -Pupload_debug=false -Pcurseforge_api_token=${{ secrets.CURSEFORGE_API_TOKEN }} -Pmodrinth_api_token=${{ secrets.MODRINTH_API_TOKEN }}
