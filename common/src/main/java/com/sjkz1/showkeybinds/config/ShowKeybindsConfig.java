@@ -26,10 +26,10 @@ public final class ShowKeybindsConfig implements ConfigData {
         public boolean offHandText = false;
         public boolean shadowedText = true;
         public boolean rainBowText = false;
-        @ConfigEntry.ColorPicker
-        public int hotBarTextColor = 0xFFFFFF;
-        @ConfigEntry.ColorPicker
-        public int itemCountColor = 0xFFFFFF;
+        @ConfigEntry.ColorPicker(allowAlpha = true)
+        public int hotBarTextColor = 0xFFFFFFFF;
+        @ConfigEntry.ColorPicker(allowAlpha = true)
+        public int itemCountColor = 0xFFFFFFFF;
         public boolean rainBowItemText = false;
         @Comment("Recommend min = 0.5,max = 1.0")
         public float hotBarScale = 1.0f;
@@ -40,8 +40,8 @@ public final class ShowKeybindsConfig implements ConfigData {
         public boolean enableContainerText = true;
         public boolean shadowedText = true;
         public boolean rainBowText = false;
-        @ConfigEntry.ColorPicker
-        public int containerTextColor = 0xFFFF55;
+        @ConfigEntry.ColorPicker(allowAlpha = true)
+        public int containerTextColor = 0xFFFF55FF;
         @Comment("Recommend min = 0.5,max = 1.0")
         public float containerScale = 1.0f;
     }

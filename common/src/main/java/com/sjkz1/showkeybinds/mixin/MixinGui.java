@@ -11,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix3x2f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,11 +35,12 @@ public abstract class MixinGui {
     @Inject(method = "renderItemHotbar", at = @At(value = "TAIL"))
     public void renderHotBar(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci) {
         if (Showkeybinds.CONFIG.general.enableHotBarText) {
+            var mat = new Matrix3x2f();
             Player player = this.getCameraPlayer();
-            guiGraphics.pose().pushPose();
-            guiGraphics.pose().translate(0f, 0f, 350f);
+            guiGraphics.pose().pushMatrix();
+            guiGraphics.pose().translate(0f, 0f);
             float scale = Showkeybinds.CONFIG.general.hotBarScale;
-            guiGraphics.pose().scale(scale, scale, scale);
+            guiGraphics.pose().scale(scale, scale);
             int i = guiGraphics.guiWidth() / 2;
             ItemStack itemStack = player.getOffhandItem();
             var humanoidArm = player.getMainArm().getOpposite();
@@ -75,7 +77,7 @@ public abstract class MixinGui {
                             Showkeybinds.CONFIG.general.shadowedText);
                 }
             }
-            guiGraphics.pose().popPose();
+            guiGraphics.pose().popMatrix();
         }
 
     }

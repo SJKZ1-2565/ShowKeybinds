@@ -70,7 +70,7 @@ remapJar {
 }
 
 curseforge {
-    apiKey = System.getenv("CURSFORGE_TOKEN")
+    apiKey = project.hasProperty("curseForgeApiKey") ? project.curseForgeApiKey : ""
     project {
         id = "684957"
         changelog = rootProject.file("CHANGE_LOG.md")
@@ -90,10 +90,10 @@ curseforge {
 }
 
 modrinth {
-    token = System.getenv("MODRINTH_TOKEN")
+    token = project.hasProperty("modrinthApiKey") ? project.modrinthApiKey : ""
     projectId = "zaElPFa3"
     versionName = "Show Keybinds ${rootProject.mod_version} ${minecraft_version} Fabric"
-    versionNumber = rootProject.minecraft_version + "-v-" +rootProject.mod_version + "-fabric"
+    versionNumber = rootProject.minecraft_version + "-v-" + rootProject.mod_version + "-fabric"
     uploadFile = remapJar
     changelog = rootProject.file("CHANGE_LOG.md").text
     gameVersions = ["${minecraft_version}"]
@@ -107,4 +107,5 @@ modrinth {
 
 task publishToModSites {
     publishToModSites.dependsOn modrinth
+    publishToModSites.dependsOn curseforge
 }

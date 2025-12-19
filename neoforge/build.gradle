@@ -62,7 +62,7 @@ remapJar {
 }
 
 curseforge {
-    apiKey = System.getenv("CURSFORGE_TOKEN")
+    apiKey = project.hasProperty("curseForgeApiKey") ? project.curseForgeApiKey : ""
     project {
         id = "684957"
         changelog = rootProject.file("CHANGE_LOG.md").text
@@ -82,7 +82,7 @@ curseforge {
 }
 
 modrinth {
-    token = System.getenv("MODRINTH_TOKEN")
+    token = project.hasProperty("modrinthApiKey") ? project.modrinthApiKey : ""
     projectId = "zaElPFa3"
     versionName = "Show Keybinds ${rootProject.mod_version} ${minecraft_version} NeoForge"
     versionNumber = rootProject.minecraft_version + "-" + rootProject.mod_version + "-neoforge"

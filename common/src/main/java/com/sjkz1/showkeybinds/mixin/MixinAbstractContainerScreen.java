@@ -27,10 +27,10 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
     @Inject(method = "renderSlot", at = @At(value = "TAIL"))
     public void renderSlot(GuiGraphics guiGraphics, Slot slot, CallbackInfo ci) {
         if (Showkeybinds.CONFIG.container.enableContainerText) {
-            guiGraphics.pose().pushPose();
-            guiGraphics.pose().translate(0f, 0f, 350f);
+            guiGraphics.pose().pushMatrix();
+            guiGraphics.pose().translate(0f, 0f);
             float scale = Showkeybinds.CONFIG.container.containerScale;
-            guiGraphics.pose().scale(scale, scale, scale);
+            guiGraphics.pose().scale(scale, scale);
 
             var list = Minecraft.getInstance().options.keyHotbarSlots;
             int textY = slot.getItem().is(Items.LIGHT) ? 8 : 0;
@@ -77,7 +77,7 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
                         Showkeybinds.CONFIG.container.shadowedText);
             }
 
-            guiGraphics.pose().popPose();
+            guiGraphics.pose().popMatrix();
         }
 
     }
