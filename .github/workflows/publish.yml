@@ -47,4 +47,4 @@ jobs:
         run: chmod +x gradlew
 
       - name: Publish Mod to CurseForge/Modrinth
-        run: ./gradlew curseforgeModrinthNeoForge curseforgeModrinthFabric -Pupload_debug=false -Pcurseforge_api_token=${{ secrets.CURSEFORGE_API_TOKEN }} -Pmodrinth_api_token=${{ secrets.MODRINTH_API_TOKEN }}
+        run: ./gradlew curseforgeModrinthNeoForge curseforgeModrinthFabric -Pupload_debug=false -PcurseForgeApiKey=${{ secrets.CURSEFORGE_API_TOKEN }} -PmodrinthApiKey=${{ secrets.MODRINTH_API_TOKEN }}
