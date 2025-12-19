@@ -48,3 +48,9 @@ jobs:
 
       - name: Publish Mod to CurseForge/Modrinth
         run: ./gradlew curseforgeModrinthNeoForge curseforgeModrinthFabric -Pupload_debug=false -Pcurseforge_api_token=${{ secrets.CURSEFORGE_API_TOKEN }} -Pmodrinth_api_token=${{ secrets.MODRINTH_API_TOKEN }}
+
+      - name: Post release on Discord
+        uses: tsickert/discord-webhook@v6.0.0
+        with:
+             webhook-url: ${{ secrets.DISCORD_API_TOKEN }}
+             content: "# Show Keybinds Release!"
