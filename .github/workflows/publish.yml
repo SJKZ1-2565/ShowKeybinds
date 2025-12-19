@@ -64,7 +64,7 @@ jobs:
         with:
           name: Artifacts
           path: |
-             build/libs
+            build/libs
 
       - name: Create release and upload files
         id: release
@@ -90,3 +90,5 @@ jobs:
           embed-title: ${{format('Show Keybinds {0}', steps.tag.outputs.tag_name)}}
           embed-url: ${{ steps.release.outputs.url }}
           embed-timestamp: ${{ steps.date.outputs.long }}
+      - name: Publish to CurseForge and Modrinth
+        run: ./gradlew curseforgeModrinthNeoForge curseforgeModrinthFabric -Pupload_debug=false -Pcurseforge_api_token=${{ secrets.CURSEFORGE_API_TOKEN }} -Pmodrinth_api_token=${{ secrets.MODRINTH_API_TOKEN }}
