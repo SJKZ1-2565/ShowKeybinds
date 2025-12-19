@@ -54,3 +54,5 @@ jobs:
         with:
              webhook-url: ${{ secrets.DISCORD_API_TOKEN }}
              content: "# Show Keybinds Release!"
+             embed-title: "Checkout at"
+             embed-description: "Modrinth: https://modrinth.com/mod/showkeybinds/versions\nCurseForge: https://www.curseforge.com/minecraft/mc-mods/showkeybinds"
