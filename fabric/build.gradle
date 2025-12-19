@@ -81,7 +81,7 @@ sourcesJar {
 }
 
 curseforge {
-    apiKey = project.hasProperty("curseForgeApiKey") ? curseForgeApiKey : ""
+    apiKey = project.hasProperty("curseforge_api_token") ? curseforge_api_token : ""
     project {
         id = "684957"
         changelog = rootProject.file("CHANGE_LOG.md")
@@ -101,7 +101,7 @@ curseforge {
 }
 
 modrinth {
-    token = project.hasProperty("modrinthApiKey") ? modrinthApiKey : ""
+    token = project.hasProperty("modrinth_api_token") ? modrinth_api_token : ""
     projectId = "zaElPFa3"
     versionName = "Show Keybinds ${rootProject.mod_version} ${minecraft_version} Fabric"
     versionNumber = rootProject.minecraft_version + "-v-" + rootProject.mod_version + "-fabric"
