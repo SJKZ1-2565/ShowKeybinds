@@ -13,6 +13,24 @@ allprojects {
     version = rootProject.mod_version
 }
 
+def platforms = enabled_platforms.split(",")*.trim()
+
+if (platforms.contains("fabric")) {
+    tasks.register("curseforgeModrinthFabric") {
+        group = "publishing"
+        dependsOn ":fabric:modrinth"
+        dependsOn ":fabric:curseforge"
+    }
+}
+
+if (platforms.contains("neoforge")) {
+    tasks.register("curseforgeModrinthNeoForge") {
+        group = "publishing"
+        dependsOn ":neoforge:modrinth"
+        dependsOn ":neoforge:curseforge"
+    }
+}
+
 subprojects {
     apply plugin: 'dev.architectury.loom'
     apply plugin: 'architectury-plugin'
