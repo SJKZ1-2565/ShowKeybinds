@@ -126,7 +126,7 @@ modrinth {
     changelog = rootProject.file("CHANGE_LOG.md").text
     gameVersions = ["${minecraft_version}"]
     loaders = ["fabric"]
-    dependencies = [new VersionDependency('WbL7MStR', 'required'),
-                    new VersionDependency('2xQdCMyG', 'optional'),
-                    new VersionDependency('lEkperf6', 'required')]
+    dependencies = [new VersionDependency('qMxkrrmq', 'required'),
+                    new VersionDependency('e0mxOOIE', 'optional'),
+                    new VersionDependency('9eRDsZKH', 'required')]
 }

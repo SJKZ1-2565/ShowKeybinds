@@ -1,1 +1,1 @@
-* Fixed Mixin not found
+* Fixed Mixin not applied

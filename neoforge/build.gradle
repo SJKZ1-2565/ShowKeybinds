@@ -106,7 +106,7 @@ modrinth {
     gameVersions = ["${minecraft_version}"]
     loaders = ["neoforge"]
     dependencies {
-        optional.version "cloth-config", "15.0.140+neoforge"
-        required.version "architectury-api", "13.0.8+neoforge"
+        optional.version "cloth-config", "20.0.149+neoforge"
+        required.version "architectury-api", "18.0.8+neoforge"
     }
 }

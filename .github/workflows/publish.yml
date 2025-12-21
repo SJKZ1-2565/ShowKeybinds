@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version (Example: 21.8.0.0)'
+        description: 'Version (Example: 21.10.0.0)'
         required: true
 
 jobs:
@@ -53,6 +53,6 @@ jobs:
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_API_TOKEN }}
-          content: "# Show Keybinds 1.21.8 Release!"
+          content: "# Show Keybinds 1.21.10 Release!"
           embed-title: "Checkout at"
           embed-description: "Modrinth: https://modrinth.com/mod/showkeybinds/versions\nCurseForge: https://www.curseforge.com/minecraft/mc-mods/showkeybinds"
