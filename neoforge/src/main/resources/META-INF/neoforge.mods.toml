@@ -8,9 +8,9 @@ modId = "showkeybinds"
 version = "${version}"
 displayName = "Show Keybinds"
 logoFile = "icon.png"
-authors = ""
+authors = "SJKZ1"
 description = '''
-This mod display key binding on the inventory slot.
+Show key binding on Hotbar and Inventory!
 '''
 #logoFile = ""
 
@@ -24,14 +24,14 @@ side = "BOTH"
 [[dependencies.showkeybinds]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.4,)"
+versionRange = "[1.21.8,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.showkeybinds]]
 modId = "architectury"
 type = "required"
-versionRange = "[13.0.8,)"
+versionRange = "[17.0.8,)"
 ordering = "AFTER"
 side = "BOTH"
 
