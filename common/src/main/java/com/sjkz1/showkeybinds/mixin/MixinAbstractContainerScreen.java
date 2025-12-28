@@ -11,6 +11,7 @@ import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.client.gui.screens.inventory.MerchantScreen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Items;
@@ -37,7 +38,7 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
             float scale = Showkeybinds.CONFIG.container.containerScale;
             int textYOffsets = slot.getItem().is(Items.LIGHT) ? 8 : 0;
             int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500F, 0.8F, 0.8F));
-            int containerColor = Showkeybinds.CONFIG.container.rainBowText ? rainbow : Showkeybinds.CONFIG.container.containerTextColor;
+            int containerColor = Showkeybinds.CONFIG.container.rainBowText ? ARGB.color(ARGB.red(rainbow), ARGB.green(rainbow), ARGB.blue(rainbow)) : Showkeybinds.CONFIG.container.containerTextColor;
             boolean showOffHandText = Showkeybinds.CONFIG.general.offHandText;
             boolean isCreativeOrMerchantScreen = screen instanceof CreativeModeInventoryScreen || screen instanceof MerchantScreen;
             boolean isSpecialSlotY = isCreativeOrMerchantScreen ? (slot.y == 112 || slot.y == 142 || slot.y == 20) : (slot.y == 142 || slot.y == 143 || slot.y == 197 || slot.y == 109 || slot.y == 195);

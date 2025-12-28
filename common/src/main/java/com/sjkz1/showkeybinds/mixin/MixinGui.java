@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -47,7 +48,7 @@ public abstract class MixinGui {
             KeyMapping[] keyMappingList = Minecraft.getInstance().options.keyHotbarSlots;
             KeyMapping offHandKey = Minecraft.getInstance().options.keySwapOffhand;
             int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F));
-            int hotBarColor = Showkeybinds.CONFIG.general.rainBowText ? rainbow : Showkeybinds.CONFIG.general.hotBarTextColor;
+            int hotBarColor = Showkeybinds.CONFIG.general.rainBowText ? ARGB.color(ARGB.red(rainbow), ARGB.green(rainbow), ARGB.blue(rainbow)) : Showkeybinds.CONFIG.general.hotBarTextColor;
 
             stack.pushMatrix();
             stack.translate(0f, 0f, 350f);
