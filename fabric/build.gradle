@@ -121,7 +121,7 @@ modrinth {
     token = project.hasProperty("modrinth_api_token") ? modrinth_api_token : ""
     projectId = "zaElPFa3"
     versionName = "Show Keybinds ${rootProject.mod_version} ${minecraft_version} Fabric"
-    versionNumber = rootProject.minecraft_version + "-v-" + rootProject.mod_version + "-fabric"
+    versionNumber = "showkeybinds-" + rootProject.mod_version + "-fabric"
     uploadFile = remapJar
     changelog = rootProject.file("CHANGE_LOG.md").text
     gameVersions = ["${minecraft_version}"]
