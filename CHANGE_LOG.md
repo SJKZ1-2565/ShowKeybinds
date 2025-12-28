@@ -1,1 +1,1 @@
-* Fixed Mixin not applied
+* Fixed Rainbow text not working 
