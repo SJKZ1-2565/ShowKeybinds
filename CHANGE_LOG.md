@@ -1,1 +1,1 @@
-* Fixed Mixin not found
+* Fixed Scaling Text not working
