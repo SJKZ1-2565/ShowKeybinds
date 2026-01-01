@@ -1,1 +1,1 @@
-* Fixed Rainbow text not working 
+* Fixed Scaling Text not working
