@@ -1,6 +1,5 @@
 package com.sjkz1.showkeybinds.mixin;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.sjkz1.showkeybinds.Showkeybinds;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.KeyMapping;
@@ -14,7 +13,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4fStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,7 +37,6 @@ public abstract class MixinGui {
     public void renderHotBar(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci) {
         if (Showkeybinds.CONFIG.general.enableHotBarText) {
 
-            Matrix4fStack stack = RenderSystem.getModelViewStack();
             Player player = this.getCameraPlayer();
             float scale = Showkeybinds.CONFIG.general.hotBarScale;
             int width = guiGraphics.guiWidth() / 2;
@@ -50,9 +47,9 @@ public abstract class MixinGui {
             int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F));
             int hotBarColor = Showkeybinds.CONFIG.general.rainBowText ? ARGB.color(ARGB.red(rainbow), ARGB.green(rainbow), ARGB.blue(rainbow)) : Showkeybinds.CONFIG.general.hotBarTextColor;
 
-            stack.pushMatrix();
-            stack.translate(0f, 0f, 350f);
-            stack.scale(scale, scale, scale);
+            guiGraphics.pose().pushMatrix();
+            guiGraphics.pose().translate(0f, 0f);
+            guiGraphics.pose().scale(scale, scale);
 
             for (int index = 0; index < Arrays.stream(keyMappingList).toList().size(); index++) {
                 float widthOffsets = (width - 92 - 15 + (index + 1) * 20) / scale;
@@ -82,7 +79,7 @@ public abstract class MixinGui {
                             Showkeybinds.CONFIG.general.shadowedText);
                 }
             }
-            stack.popMatrix();
+            guiGraphics.pose().popMatrix();
         }
 
     }

@@ -1,6 +1,5 @@
 package com.sjkz1.showkeybinds.mixin;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.sjkz1.showkeybinds.Showkeybinds;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -15,7 +14,6 @@ import net.minecraft.util.ARGB;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Items;
-import org.joml.Matrix4fStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -34,7 +32,6 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
         if (Showkeybinds.CONFIG.container.enableContainerText) {
             Screen screen = Minecraft.getInstance().screen;
             KeyMapping[] keyMappingList = Minecraft.getInstance().options.keyHotbarSlots;
-            Matrix4fStack stack = RenderSystem.getModelViewStack();
             float scale = Showkeybinds.CONFIG.container.containerScale;
             int textYOffsets = slot.getItem().is(Items.LIGHT) ? 8 : 0;
             int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500F, 0.8F, 0.8F));
@@ -43,9 +40,9 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
             boolean isCreativeOrMerchantScreen = screen instanceof CreativeModeInventoryScreen || screen instanceof MerchantScreen;
             boolean isSpecialSlotY = isCreativeOrMerchantScreen ? (slot.y == 112 || slot.y == 142 || slot.y == 20) : (slot.y == 142 || slot.y == 143 || slot.y == 197 || slot.y == 109 || slot.y == 195);
 
-            stack.pushMatrix();
-            stack.translate(0f, 0f, 350f);
-            stack.scale(scale, scale, scale);
+            guiGraphics.pose().pushMatrix();
+            guiGraphics.pose().translate(0f, 0f);
+            guiGraphics.pose().scale(scale, scale);
 
             if (isSpecialSlotY) {
                 int[] slotX = isCreativeOrMerchantScreen
@@ -83,7 +80,7 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
                         Showkeybinds.CONFIG.container.shadowedText);
             }
 
-            stack.popMatrix();
+            guiGraphics.pose().popMatrix();
         }
 
     }
