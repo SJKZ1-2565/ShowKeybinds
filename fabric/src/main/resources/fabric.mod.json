@@ -3,9 +3,9 @@
   "id": "showkeybinds",
   "version": "${version}",
   "name": "Show Keybinds",
-  "description": "This mod display key binding on the inventory slot.",
+  "description": "Show key binding on Hotbar and Inventory!",
   "authors": [
-    ""
+    "SJKZ1"
   ],
   "contact": {
     "homepage": ""
