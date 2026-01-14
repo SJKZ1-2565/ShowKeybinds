@@ -28,7 +28,7 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
     }
 
     @Inject(method = "renderSlot", at = @At(value = "TAIL"))
-    public void renderSlot(GuiGraphics guiGraphics, Slot slot, CallbackInfo ci) {
+    public void renderSlot(GuiGraphics guiGraphics, Slot slot, int i, int j, CallbackInfo ci) {
         if (Showkeybinds.CONFIG.container.enableContainerText) {
             Screen screen = Minecraft.getInstance().screen;
             KeyMapping[] keyMappingList = Minecraft.getInstance().options.keyHotbarSlots;
