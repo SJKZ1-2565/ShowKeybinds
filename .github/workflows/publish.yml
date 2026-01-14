@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version (Example: mc1.21.10-v21.10.0.0)'
+        description: 'Version (Example: 21.10.0.0)'
         required: true
 
 jobs:
@@ -50,9 +50,9 @@ jobs:
         run: ./gradlew curseforgeModrinthNeoForge curseforgeModrinthFabric -Pupload_debug=false -Pcurseforge_api_token=${{ secrets.CURSEFORGE_API_TOKEN }} -Pmodrinth_api_token=${{ secrets.MODRINTH_API_TOKEN }}
 
       - name: Post release on Discord
-        uses: tsickert/discord-webhook@v6.0.0
+        uses: tsickert/discord-webhook@v7.0.0
         with:
-             webhook-url: ${{ secrets.DISCORD_API_TOKEN }}
-             content: "# Show Keybinds Release!"
-             embed-title: "Checkout at"
-             embed-description: "Modrinth: https://modrinth.com/mod/showkeybinds/versions\nCurseForge: https://www.curseforge.com/minecraft/mc-mods/showkeybinds"
+          webhook-url: ${{ secrets.DISCORD_API_TOKEN }}
+          content: "# Show Keybinds 1.21.10 Release!"
+          embed-title: "Checkout at"
+          embed-description: "Modrinth: https://modrinth.com/mod/showkeybinds/versions\nCurseForge: https://www.curseforge.com/minecraft/mc-mods/showkeybinds"
