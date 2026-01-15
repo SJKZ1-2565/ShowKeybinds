@@ -1,1 +1,1 @@
-* Fixed Scaling Text not working
+* Fixed Crash on start up
