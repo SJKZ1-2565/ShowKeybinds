@@ -23,12 +23,14 @@ import java.awt.*;
 
 @Mixin(AbstractContainerScreen.class)
 public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMenu> extends Screen implements MenuAccess<T> {
-    MixinAbstractContainerScreen() {
+
+
+    protected MixinAbstractContainerScreen() {
         super(null);
     }
 
-    @Inject(method = "renderSlot", at = @At(value = "TAIL"))
-    public void renderSlot(GuiGraphics guiGraphics, Slot slot, int i, int j, CallbackInfo ci) {
+    @Inject(method = "renderSlot(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/world/inventory/Slot;II)V", at = @At(value = "TAIL"))
+    public void showKeybinds$renderSlot(GuiGraphics guiGraphics, Slot slot, int moseX, int mouseY, CallbackInfo ci) {
         if (Showkeybinds.CONFIG.container.enableContainerText) {
             Screen screen = Minecraft.getInstance().screen;
             KeyMapping[] keyMappingList = Minecraft.getInstance().options.keyHotbarSlots;
