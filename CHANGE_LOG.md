@@ -1,1 +1,1 @@
-* Fixed Crash on start up
+* Refactor for better performance
