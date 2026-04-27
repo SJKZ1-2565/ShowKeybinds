@@ -43,7 +43,6 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
     {
         if (!Showkeybinds.CONFIG.container.enableContainerText) return;
 
-        // Cache Minecraft instance ครั้งเดียว
         Minecraft mc = Minecraft.getInstance();
         Screen screen = mc.screen;
         KeyMapping[] keyMappingList = mc.options.keyHotbarSlots;
@@ -53,7 +52,6 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
         int textYOffsets = slot.getItem().is(Items.LIGHT) ? 8 : 0;
         boolean showOffHandText = Showkeybinds.CONFIG.general.offHandText;
 
-        // FIX: ไม่ใช้ Math.abs() + ใส่ alpha=255 อย่างชัดเจน
         int hsb = Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F);
         int containerColor = Showkeybinds.CONFIG.container.rainBowText
                 ? ARGB.color(255, ARGB.red(hsb), ARGB.green(hsb), ARGB.blue(hsb))
@@ -62,7 +60,6 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
         boolean isCreativeOrMerchant = screen instanceof CreativeModeInventoryScreen
                 || screen instanceof MerchantScreen;
 
-        // เลือก slot Y/X ตาม screen type
         int[] validSlotY = isCreativeOrMerchant ? CREATIVE_SLOT_Y : SURVIVAL_SLOT_Y;
         int[] slotX = isCreativeOrMerchant ? CREATIVE_SLOT_X : SURVIVAL_SLOT_X;
 
@@ -77,7 +74,6 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
         }
 
         guiGraphics.pose().pushMatrix();
-        // FIX: ลบ translate(0,0) ที่ไม่มีผล
         guiGraphics.pose().scale(scale, scale);
 
         if (isSpecialSlotY)
