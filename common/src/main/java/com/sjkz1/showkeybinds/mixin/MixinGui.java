@@ -20,10 +20,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.awt.*;
-import java.util.Arrays;
 
 @Mixin(Gui.class)
-public abstract class MixinGui {
+public abstract class MixinGui
+{
 
 
     @Shadow
@@ -34,8 +34,10 @@ public abstract class MixinGui {
     public abstract Font getFont();
 
     @Inject(method = "renderItemHotbar", at = @At(value = "TAIL"))
-    public void renderHotBar(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci) {
-        if (Showkeybinds.CONFIG.general.enableHotBarText) {
+    public void renderHotBar(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci)
+    {
+        if (Showkeybinds.CONFIG.general.enableHotBarText)
+        {
 
             Player player = this.getCameraPlayer();
             float scale = Showkeybinds.CONFIG.general.hotBarScale;
@@ -44,33 +46,38 @@ public abstract class MixinGui {
             HumanoidArm humanoidArm = player.getMainArm().getOpposite();
             KeyMapping[] keyMappingList = Minecraft.getInstance().options.keyHotbarSlots;
             KeyMapping offHandKey = Minecraft.getInstance().options.keySwapOffhand;
-            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F));
-            int hotBarColor = Showkeybinds.CONFIG.general.rainBowText ? ARGB.color(ARGB.red(rainbow), ARGB.green(rainbow), ARGB.blue(rainbow)) : Showkeybinds.CONFIG.general.hotBarTextColor;
-
+            int hsb = Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F);
+            int hotBarColor = Showkeybinds.CONFIG.general.rainBowText
+                    ? ARGB.color(255, ARGB.red(hsb), ARGB.green(hsb), ARGB.blue(hsb))
+                    : Showkeybinds.CONFIG.general.hotBarTextColor;
             guiGraphics.pose().pushMatrix();
-            guiGraphics.pose().translate(0f, 0f);
             guiGraphics.pose().scale(scale, scale);
 
-            for (int index = 0; index < Arrays.stream(keyMappingList).toList().size(); index++) {
+            for (int index = 0; index < keyMappingList.length; index++)
+            {
+                KeyMapping key = keyMappingList[index];
                 float widthOffsets = (width - 92 - 15 + (index + 1) * 20) / scale;
                 int textY = player.inventoryMenu.slots.get(index + 36).getItem().is(Items.LIGHT) ? 7 : 0;
                 guiGraphics.drawString(this.getFont(),
-                        Arrays.stream(keyMappingList).toList().get(index).getTranslatedKeyMessage(),
+                        key.getTranslatedKeyMessage(),
                         (int) widthOffsets,
                         (int) ((guiGraphics.guiHeight() - (21) + 3 + textY) / scale),
                         hotBarColor,
                         Showkeybinds.CONFIG.general.shadowedText);
             }
-            if (!itemStack.isEmpty() && Showkeybinds.CONFIG.general.offHandText) {
+            if (!itemStack.isEmpty() && Showkeybinds.CONFIG.general.offHandText)
+            {
                 int textY = player.inventoryMenu.slots.get(45).getItem().is(Items.LIGHT) ? 8 : 0;
-                if (humanoidArm == HumanoidArm.LEFT) {
+                if (humanoidArm == HumanoidArm.LEFT)
+                {
                     guiGraphics.drawString(this.getFont(),
                             offHandKey.getTranslatedKeyMessage(),
                             (int) ((width - 87 - 29) / scale),
                             (int) ((guiGraphics.guiHeight() - (19) + textY) / scale),
                             hotBarColor,
                             Showkeybinds.CONFIG.general.shadowedText);
-                } else {
+                } else
+                {
                     guiGraphics.drawString(this.getFont(),
                             offHandKey.getTranslatedKeyMessage(),
                             (int) ((width + 102) / scale),

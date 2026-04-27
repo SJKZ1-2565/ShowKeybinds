@@ -8,8 +8,10 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 @Mod(Showkeybinds.MOD_ID)
-public final class ShowkeybindsNeoForge {
-    public ShowkeybindsNeoForge() {
+public final class ShowkeybindsNeoForge
+{
+    public ShowkeybindsNeoForge()
+    {
         Showkeybinds.init();
         Showkeybinds.registerConfig();
         ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> (mc, screen) -> AutoConfigClient.getConfigScreen(ShowKeybindsConfig.class, screen).get());

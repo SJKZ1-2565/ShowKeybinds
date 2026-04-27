@@ -8,7 +8,8 @@ import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 
 @Config(name = Showkeybinds.MOD_ID)
 @Config.Gui.Background("minecraft:textures/block/cherry_planks.png")
-public final class ShowKeybindsConfig implements ConfigData {
+public final class ShowKeybindsConfig implements ConfigData
+{
     @ConfigEntry.Category("hotbar")
     @ConfigEntry.Gui.TransitiveObject
     public General general;
@@ -16,12 +17,14 @@ public final class ShowKeybindsConfig implements ConfigData {
     @ConfigEntry.Gui.TransitiveObject
     public Container container;
 
-    public ShowKeybindsConfig() {
+    public ShowKeybindsConfig()
+    {
         this.general = new General();
         this.container = new Container();
     }
 
-    public static class General {
+    public static class General
+    {
         public boolean enableHotBarText = true;
         public boolean offHandText = false;
         public boolean shadowedText = true;
@@ -29,6 +32,7 @@ public final class ShowKeybindsConfig implements ConfigData {
         @ConfigEntry.ColorPicker(allowAlpha = true)
         public int hotBarTextColor = 0xFFFFFFFF;
         @ConfigEntry.ColorPicker(allowAlpha = true)
+        public boolean enableItemCountColor = false;
         public int itemCountColor = 0xFFFFFFFF;
         public boolean rainBowItemText = false;
         @Comment("Recommend min = 0.5,max = 1.0")
@@ -36,7 +40,8 @@ public final class ShowKeybindsConfig implements ConfigData {
     }
 
 
-    public static class Container {
+    public static class Container
+    {
         public boolean enableContainerText = true;
         public boolean shadowedText = true;
         public boolean rainBowText = false;

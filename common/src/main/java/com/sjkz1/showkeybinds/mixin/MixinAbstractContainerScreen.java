@@ -22,68 +22,111 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.awt.*;
 
 @Mixin(AbstractContainerScreen.class)
-public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMenu> extends Screen implements MenuAccess<T> {
+public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMenu> extends Screen implements MenuAccess<T>
+{
 
+    private static final int[] SURVIVAL_SLOT_Y = {142, 143, 197, 109, 195};
+    private static final int[] CREATIVE_SLOT_Y = {112, 142, 20};
+    private static final int[] SURVIVAL_SLOT_X = {8, 26, 44, 62, 80, 98, 116, 134, 152};
+    private static final int[] CREATIVE_SLOT_X = {9, 27, 45, 63, 81, 99, 117, 135, 153, 35};
+    private static final int SURVIVAL_OFFHAND_X = 77;
+    private static final int SURVIVAL_OFFHAND_Y = 62;
 
-    protected MixinAbstractContainerScreen() {
+    protected MixinAbstractContainerScreen()
+    {
         super(null);
     }
 
-    @Inject(method = "renderSlot(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/world/inventory/Slot;II)V", at = @At(value = "TAIL"))
-    public void showKeybinds$renderSlot(GuiGraphics guiGraphics, Slot slot, int moseX, int mouseY, CallbackInfo ci) {
-        if (Showkeybinds.CONFIG.container.enableContainerText) {
-            Screen screen = Minecraft.getInstance().screen;
-            KeyMapping[] keyMappingList = Minecraft.getInstance().options.keyHotbarSlots;
-            float scale = Showkeybinds.CONFIG.container.containerScale;
-            int textYOffsets = slot.getItem().is(Items.LIGHT) ? 8 : 0;
-            int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500F, 0.8F, 0.8F));
-            int containerColor = Showkeybinds.CONFIG.container.rainBowText ? ARGB.color(ARGB.red(rainbow), ARGB.green(rainbow), ARGB.blue(rainbow)) : Showkeybinds.CONFIG.container.containerTextColor;
-            boolean showOffHandText = Showkeybinds.CONFIG.general.offHandText;
-            boolean isCreativeOrMerchantScreen = screen instanceof CreativeModeInventoryScreen || screen instanceof MerchantScreen;
-            boolean isSpecialSlotY = isCreativeOrMerchantScreen ? (slot.y == 112 || slot.y == 142 || slot.y == 20) : (slot.y == 142 || slot.y == 143 || slot.y == 197 || slot.y == 109 || slot.y == 195);
+    @Inject(method = "renderSlot(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/world/inventory/Slot;II)V", at = @At(value = "TAIL")
+    )
+    public void showKeybinds$renderSlot(GuiGraphics guiGraphics, Slot slot, int mouseX, int mouseY, CallbackInfo ci)
+    {
+        if (!Showkeybinds.CONFIG.container.enableContainerText) return;
 
-            guiGraphics.pose().pushMatrix();
-            guiGraphics.pose().translate(0f, 0f);
-            guiGraphics.pose().scale(scale, scale);
+        // Cache Minecraft instance ครั้งเดียว
+        Minecraft mc = Minecraft.getInstance();
+        Screen screen = mc.screen;
+        KeyMapping[] keyMappingList = mc.options.keyHotbarSlots;
+        KeyMapping offhandKey = mc.options.keySwapOffhand;
 
-            if (isSpecialSlotY) {
-                int[] slotX = isCreativeOrMerchantScreen
-                        ? new int[]{9, 27, 45, 63, 81, 99, 117, 135, 153, 35}
-                        : new int[]{8, 26, 44, 62, 80, 98, 116, 134, 152};
+        float scale = Showkeybinds.CONFIG.container.containerScale;
+        int textYOffsets = slot.getItem().is(Items.LIGHT) ? 8 : 0;
+        boolean showOffHandText = Showkeybinds.CONFIG.general.offHandText;
 
-                for (int index = 0; index < slotX.length; index++) {
-                    if (slot.x == slotX[index]) {
-                        Component keyMessage = index < 9 ? keyMappingList[index].getTranslatedKeyMessage() : Minecraft.getInstance().options.keySwapOffhand.getTranslatedKeyMessage();
-                        guiGraphics.drawString(this.font,
-                                keyMessage,
-                                (int) (slot.x / scale),
-                                (int) ((slot.y) / scale) + textYOffsets,
-                                containerColor,
-                                Showkeybinds.CONFIG.container.shadowedText);
-                    }
-                }
+        // FIX: ไม่ใช้ Math.abs() + ใส่ alpha=255 อย่างชัดเจน
+        int hsb = Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500.0F, 0.8F, 0.8F);
+        int containerColor = Showkeybinds.CONFIG.container.rainBowText
+                ? ARGB.color(255, ARGB.red(hsb), ARGB.green(hsb), ARGB.blue(hsb))
+                : Showkeybinds.CONFIG.container.containerTextColor;
+
+        boolean isCreativeOrMerchant = screen instanceof CreativeModeInventoryScreen
+                || screen instanceof MerchantScreen;
+
+        // เลือก slot Y/X ตาม screen type
+        int[] validSlotY = isCreativeOrMerchant ? CREATIVE_SLOT_Y : SURVIVAL_SLOT_Y;
+        int[] slotX = isCreativeOrMerchant ? CREATIVE_SLOT_X : SURVIVAL_SLOT_X;
+
+        boolean isSpecialSlotY = false;
+        for (int y : validSlotY)
+        {
+            if (slot.y == y)
+            {
+                isSpecialSlotY = true;
+                break;
             }
-            //This fixed off-hand key render when it's survival inventory
-            if (slot.x == 77 && slot.y == 62 && showOffHandText) {
-                Component keyMessage = Minecraft.getInstance().options.keySwapOffhand.getTranslatedKeyMessage();
-                guiGraphics.drawString(this.font,
-                        keyMessage,
-                        (int) (slot.x / scale),
-                        (int) ((slot.y) / scale) + textYOffsets,
-                        containerColor,
-                        Showkeybinds.CONFIG.container.shadowedText);
-            }
-            if (Showkeybinds.DEBUG) {
-                guiGraphics.drawString(this.font,
-                        String.valueOf(slot.x),
-                        (int) (slot.x / scale),
-                        (int) ((slot.y) / scale) + textYOffsets,
-                        containerColor,
-                        Showkeybinds.CONFIG.container.shadowedText);
-            }
-
-            guiGraphics.pose().popMatrix();
         }
 
+        guiGraphics.pose().pushMatrix();
+        // FIX: ลบ translate(0,0) ที่ไม่มีผล
+        guiGraphics.pose().scale(scale, scale);
+
+        if (isSpecialSlotY)
+        {
+            for (int index = 0; index < slotX.length; index++)
+            {
+                if (slot.x == slotX[index])
+                {
+                    boolean isOffhandSlot = index >= 9;
+
+                    if (isOffhandSlot && !showOffHandText) break;
+
+                    Component keyMessage = isOffhandSlot
+                            ? offhandKey.getTranslatedKeyMessage()
+                            : keyMappingList[index].getTranslatedKeyMessage();
+
+                    guiGraphics.drawString(this.font,
+                            keyMessage,
+                            (int) (slot.x / scale),
+                            (int) (slot.y / scale) + textYOffsets,
+                            containerColor,
+                            Showkeybinds.CONFIG.container.shadowedText);
+                    break;
+                }
+            }
+        }
+
+        // Survival offhand slot (fixed position)
+        if (slot.x == SURVIVAL_OFFHAND_X && slot.y == SURVIVAL_OFFHAND_Y && showOffHandText)
+        {
+            guiGraphics.drawString(this.font,
+                    offhandKey.getTranslatedKeyMessage(),
+                    (int) (slot.x / scale),
+                    (int) (slot.y / scale) + textYOffsets,
+                    containerColor,
+                    Showkeybinds.CONFIG.container.shadowedText);
+        }
+
+        // Debug mode
+        if (Showkeybinds.DEBUG)
+        {
+            guiGraphics.drawString(this.font,
+                    String.valueOf(slot.x),
+                    (int) (slot.x / scale),
+                    (int) (slot.y / scale) + textYOffsets,
+                    containerColor,
+                    Showkeybinds.CONFIG.container.shadowedText);
+        }
+
+        guiGraphics.pose().popMatrix();
     }
 }
