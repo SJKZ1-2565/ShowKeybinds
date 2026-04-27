@@ -32,10 +32,9 @@ public final class ShowKeybindsConfig implements ConfigData
         @ConfigEntry.ColorPicker(allowAlpha = true)
         public int hotBarTextColor = 0xFFFFFFFF;
         @ConfigEntry.ColorPicker(allowAlpha = true)
-        public boolean enableItemCountColor = false;
         public int itemCountColor = 0xFFFFFFFF;
+        public boolean enableItemCountColor = false;
         public boolean rainBowItemText = false;
-        @Comment("Recommend min = 0.5,max = 1.0")
         public float hotBarScale = 1.0f;
     }
 

@@ -13,6 +13,7 @@
   "text.autoconfig.showkeybinds.option.container.shadowedText": "Shadow font",
   "text.autoconfig.showkeybinds.option.general.hotBarScale": "Hot-bar text size",
   "text.autoconfig.showkeybinds.option.general.itemCountColor": "Item count color",
+  "text.autoconfig.showkeybinds.option.general.enableItemCountColor": "Enable Item count color",
   "text.autoconfig.showkeybinds.category.container": "Container",
   "text.autoconfig.showkeybinds.option.container.containerTextColor": "Container keybindings color",
   "text.autoconfig.showkeybinds.option.container.enableContainerText": "Show keybindings on Container",
