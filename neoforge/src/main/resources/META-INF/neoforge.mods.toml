@@ -7,7 +7,7 @@ license = "All Rights Reserved"
 modId = "showkeybinds"
 version = "${version}"
 displayName = "Show Keybinds"
-logoFile = "icon.png"
+logoFile = "logo.png"
 authors = "SJKZ1"
 description = '''
 Show key binding on Hotbar and Inventory!
