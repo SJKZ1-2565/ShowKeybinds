@@ -47,7 +47,7 @@ processResources {
 }
 
 
-String fileName = "showkeyybinds-${project.version}-neoforge"
+String fileName = "showkeyybinds-${project.version}"
 
 shadowJar {
     configurations = [project.configurations.shadowBundle]
@@ -100,7 +100,7 @@ modrinth {
     token = project.hasProperty("modrinth_api_token") ? modrinth_api_token : ""
     projectId = "zaElPFa3"
     versionName = "Show Keybinds ${rootProject.mod_version} ${minecraft_version} NeoForge"
-    versionNumber = "showkeybinds-" + rootProject.mod_version + "-neoforge"
+    versionNumber = "showkeybinds-" + rootProject.mod_version
     uploadFile = remapJar
     changelog = rootProject.file("CHANGE_LOG.md").text
     gameVersions = ["${minecraft_version}"]
