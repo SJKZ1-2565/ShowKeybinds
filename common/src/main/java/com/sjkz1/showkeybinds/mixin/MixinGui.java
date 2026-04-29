@@ -6,7 +6,7 @@ import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.player.Player;
@@ -33,15 +33,15 @@ public abstract class MixinGui
     @Shadow
     public abstract Font getFont();
 
-    @Inject(method = "renderItemHotbar", at = @At(value = "TAIL"))
-    public void renderHotBar(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci)
+    @Inject(method = "extractItemHotbar", at = @At(value = "TAIL"))
+    public void renderHotBar(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker, CallbackInfo ci)
     {
         if (Showkeybinds.CONFIG.general.enableHotBarText)
         {
 
             Player player = this.getCameraPlayer();
             float scale = Showkeybinds.CONFIG.general.hotBarScale;
-            int width = guiGraphics.guiWidth() / 2;
+            int width = graphics.guiWidth() / 2;
             ItemStack itemStack = player.getOffhandItem();
             HumanoidArm humanoidArm = player.getMainArm().getOpposite();
             KeyMapping[] keyMappingList = Minecraft.getInstance().options.keyHotbarSlots;
@@ -50,18 +50,18 @@ public abstract class MixinGui
             int hotBarColor = Showkeybinds.CONFIG.general.rainBowText
                     ? ARGB.color(255, ARGB.red(hsb), ARGB.green(hsb), ARGB.blue(hsb))
                     : Showkeybinds.CONFIG.general.hotBarTextColor;
-            guiGraphics.pose().pushMatrix();
-            guiGraphics.pose().scale(scale, scale);
+            graphics.pose().pushMatrix();
+            graphics.pose().scale(scale, scale);
 
             for (int index = 0; index < keyMappingList.length; index++)
             {
                 KeyMapping key = keyMappingList[index];
                 float widthOffsets = (width - 92 - 15 + (index + 1) * 20) / scale;
                 int textY = player.inventoryMenu.slots.get(index + 36).getItem().is(Items.LIGHT) ? 7 : 0;
-                guiGraphics.drawString(this.getFont(),
+                graphics.text(this.getFont(),
                         key.getTranslatedKeyMessage(),
                         (int) widthOffsets,
-                        (int) ((guiGraphics.guiHeight() - (21) + 3 + textY) / scale),
+                        (int) ((graphics.guiHeight() - (21) + 3 + textY) / scale),
                         hotBarColor,
                         Showkeybinds.CONFIG.general.shadowedText);
             }
@@ -70,23 +70,23 @@ public abstract class MixinGui
                 int textY = player.inventoryMenu.slots.get(45).getItem().is(Items.LIGHT) ? 8 : 0;
                 if (humanoidArm == HumanoidArm.LEFT)
                 {
-                    guiGraphics.drawString(this.getFont(),
+                    graphics.text(this.getFont(),
                             offHandKey.getTranslatedKeyMessage(),
                             (int) ((width - 87 - 29) / scale),
-                            (int) ((guiGraphics.guiHeight() - (19) + textY) / scale),
+                            (int) ((graphics.guiHeight() - (19) + textY) / scale),
                             hotBarColor,
                             Showkeybinds.CONFIG.general.shadowedText);
                 } else
                 {
-                    guiGraphics.drawString(this.getFont(),
+                    graphics.text(this.getFont(),
                             offHandKey.getTranslatedKeyMessage(),
                             (int) ((width + 102) / scale),
-                            (int) ((guiGraphics.guiHeight() - (19) + textY) / scale),
+                            (int) ((graphics.guiHeight() - (19) + textY) / scale),
                             hotBarColor,
                             Showkeybinds.CONFIG.general.shadowedText);
                 }
             }
-            guiGraphics.pose().popMatrix();
+            graphics.pose().popMatrix();
         }
 
     }
