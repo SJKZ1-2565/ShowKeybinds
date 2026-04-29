@@ -18,7 +18,7 @@ public class MixinGuiGraphics
     @ModifyArgs(method = "renderItemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Ljava/lang/String;IIIZ)V"))
     public void renderGuiItemDecorations$Colored(Args args)
     {
-        int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500F,0.8F,0.8F));
+        int rainbow = Math.abs(Color.HSBtoRGB(System.currentTimeMillis() % 2500L / 2500F, 0.8F, 0.8F));
         int itemColor = Showkeybinds.CONFIG.general.rainBowItemText ? ARGB.color(255, ARGB.red(rainbow), ARGB.green(rainbow), ARGB.blue(rainbow)) : Showkeybinds.CONFIG.general.enableItemCountColor ? Showkeybinds.CONFIG.general.itemCountColor : args.get(4);
         args.set(4, itemColor);
     }
