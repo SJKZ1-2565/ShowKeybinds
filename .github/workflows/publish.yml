@@ -53,6 +53,6 @@ jobs:
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_API_TOKEN }}
-          content: "# Show Keybinds 1.21.11 Release!"
+          content: "# Show Keybinds 26.1.2.0 Release!"
           embed-title: "Checkout at"
           embed-description: "Modrinth: https://modrinth.com/mod/showkeybinds/versions\nCurseForge: https://www.curseforge.com/minecraft/mc-mods/showkeybinds"
