@@ -4,6 +4,11 @@ architectury {
 }
 
 configurations {
+
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentNeoForge.extendsFrom common
+
     common {
         canBeResolved = true
         canBeConsumed = false
@@ -53,6 +58,10 @@ sourcesJar {
     dependsOn commonSources
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from commonSources.archiveFile.map { zipTree(it) }
+}
+
+jar {
+    archiveClassifier = "raw"
 }
 
 shadowJar {
