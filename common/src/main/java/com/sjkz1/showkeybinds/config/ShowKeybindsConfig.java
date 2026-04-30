@@ -35,7 +35,16 @@ public final class ShowKeybindsConfig implements ConfigData
         public int itemCountColor = 0xFFFFFFFF;
         public boolean enableItemCountColor = false;
         public boolean rainBowItemText = false;
-        public float hotBarScale = 1.0f;
+        public float keySlot1Scale = 1.0F;
+        public float keySlot2Scale = 1.0F;
+        public float keySlot3Scale = 1.0F;
+        public float keySlot4Scale = 1.0F;
+        public float keySlot5Scale = 1.0F;
+        public float keySlot6Scale = 1.0F;
+        public float keySlot7Scale = 1.0F;
+        public float keySlot8Scale = 1.0F;
+        public float keySlot9Scale = 1.0F;
+        public float offHandKeySlotScale = 1.0F;
     }
 
 
