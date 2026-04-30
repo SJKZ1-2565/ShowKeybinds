@@ -119,7 +119,7 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
                     Showkeybinds.CONFIG.container.shadowedText);
         }
     }
-    
+
     @Unique
     private void showkeybinds$drawSlotKeybind(GuiGraphics graphics, int index, boolean isCreativeOrMerchant)
     {
@@ -147,8 +147,11 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
             boolean isValidY = false;
             for (int y : validSlotY)
             {
-                isValidY = true;
-                break;
+                if (slot.y == y)
+                {
+                    isValidY = true;
+                    break;
+                }
             }
 
             if (!isValidY || slot.x != slotX[index]) continue;
@@ -169,7 +172,6 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
                     Showkeybinds.CONFIG.container.shadowedText);
             graphics.pose().popMatrix();
         }
-
     }
 
     @Unique
