@@ -1,30 +1,29 @@
 modLoader = "javafml"
 loaderVersion = "[2,)"
 #issueTrackerURL = ""
-license = "All Rights Reserved"
+license = "MIT"
 
 [[mods]]
 modId = "showkeybinds"
 version = "${version}"
 displayName = "Show Keybinds"
-logoFile = "logo.png"
+iconFile = "logo.png"
 authors = "SJKZ1"
 description = '''
 Show key binding on Hotbar and Inventory!
 '''
-#logoFile = ""
 
 [[dependencies.showkeybinds]]
 modId = "neoforge"
 type = "required"
-versionRange = "[26,)"
+versionRange = "[26.2,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.showkeybinds]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.1.2,)"
+versionRange = "[26.2,)"
 ordering = "NONE"
 side = "BOTH"
 

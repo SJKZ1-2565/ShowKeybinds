@@ -88,7 +88,7 @@ public abstract class MixinAbstractContainerScreen<T extends AbstractContainerMe
 
         showkeybinds$loadScale();
         Minecraft mc = Minecraft.getInstance();
-        Screen screen = mc.screen;
+        Screen screen = mc.gui.screen();
         boolean isCreativeOrMerchant = screen instanceof CreativeModeInventoryScreen
                 || screen instanceof MerchantScreen;
         int[] slotX = isCreativeOrMerchant ? CREATIVE_SLOT_X : SURVIVAL_SLOT_X;
