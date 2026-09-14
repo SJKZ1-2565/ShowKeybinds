@@ -106,7 +106,6 @@ curseforge {
         releaseType = "release"
         addGameVersion "Fabric"
         addGameVersion minecraft_version
-        addGameVersion "Java 25"
         mainArtifact shadowJar.archiveFile
         afterEvaluate {
             uploadTask.dependsOn(shadowJar)
